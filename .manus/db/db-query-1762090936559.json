@@ -1,0 +1,9 @@
+{
+  "query": "INSERT INTO badges (volunteerId, badgeName, badgeDescription, badgeIcon, badgeType, earnedAt) VALUES \n(1, 'Mentora de Oro', 'Tu dedicación inspira. ¡25 vidas transformadas gracias a ti!', '🥇', 'milestone', NOW()),\n(1, 'Leyenda FQT', 'Eres parte de la historia de FQT. 50+ mujeres tienen un futuro mejor gracias a ti', '👑', 'milestone', NOW());",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 1d5hijgR4Ge6ZqH.root --database ehPep9asg657TmCX4WxQxm --execute INSERT INTO badges (volunteerId, badgeName, badgeDescription, badgeIcon, badgeType, earnedAt) VALUES \n(1, 'Mentora de Oro', 'Tu dedicación inspira. ¡25 vidas transformadas gracias a ti!', '🥇', 'milestone', NOW()),\n(1, 'Leyenda FQT', 'Eres parte de la historia de FQT. 50+ mujeres tienen un futuro mejor gracias a ti', '👑', 'milestone', NOW());",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 59
+}

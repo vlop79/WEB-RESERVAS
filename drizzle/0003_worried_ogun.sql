@@ -1,0 +1,1 @@
+ALTER TABLE `service_types` ADD `modality` enum('virtual','presencial') NOT NULL;

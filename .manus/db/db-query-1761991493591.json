@@ -1,0 +1,17 @@
+{
+  "query": "SELECT c.id, c.name, c.assignedDay, c.fullMonthCalendar, COUNT(s.id) as total_slots \nFROM companies c \nLEFT JOIN slots s ON c.id = s.companyId \nWHERE c.slug = 'totalenergies' \nGROUP BY c.id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 1d5hijgR4Ge6ZqH.root --database ehPep9asg657TmCX4WxQxm --execute SELECT c.id, c.name, c.assignedDay, c.fullMonthCalendar, COUNT(s.id) as total_slots \nFROM companies c \nLEFT JOIN slots s ON c.id = s.companyId \nWHERE c.slug = 'totalenergies' \nGROUP BY c.id;",
+  "rows": [
+    {
+      "id": "30156",
+      "name": "TotalEnergies",
+      "assignedDay": "1r miércoles",
+      "fullMonthCalendar": "0",
+      "total_slots": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tassignedDay\tfullMonthCalendar\ttotal_slots\n30156\tTotalEnergies\t1r miércoles\t0\t0\n",
+  "stderr": "",
+  "execution_time_ms": 52
+}

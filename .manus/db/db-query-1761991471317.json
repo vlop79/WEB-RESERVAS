@@ -1,0 +1,17 @@
+{
+  "query": "SELECT id, name, slug, fullMonthCalendar, assignedDay FROM companies WHERE slug = 'totalenergies' OR name LIKE '%Total%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 1d5hijgR4Ge6ZqH.root --database ehPep9asg657TmCX4WxQxm --execute SELECT id, name, slug, fullMonthCalendar, assignedDay FROM companies WHERE slug = 'totalenergies' OR name LIKE '%Total%';",
+  "rows": [
+    {
+      "id": "30156",
+      "name": "TotalEnergies",
+      "slug": "totalenergies",
+      "fullMonthCalendar": "0",
+      "assignedDay": "1r miércoles"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tfullMonthCalendar\tassignedDay\n30156\tTotalEnergies\ttotalenergies\t0\t1r miércoles\n",
+  "stderr": "",
+  "execution_time_ms": 48
+}

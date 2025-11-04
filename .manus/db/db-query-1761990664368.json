@@ -1,0 +1,46 @@
+{
+  "query": "SELECT id, name, slug, fullMonthCalendar FROM companies WHERE fullMonthCalendar = 1;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 1d5hijgR4Ge6ZqH.root --database ehPep9asg657TmCX4WxQxm --execute SELECT id, name, slug, fullMonthCalendar FROM companies WHERE fullMonthCalendar = 1;",
+  "rows": [
+    {
+      "id": "30144",
+      "name": "Admiral",
+      "slug": "admiral",
+      "fullMonthCalendar": "1"
+    },
+    {
+      "id": "30148",
+      "name": "CBRE",
+      "slug": "cbre",
+      "fullMonthCalendar": "1"
+    },
+    {
+      "id": "30159",
+      "name": "Banco Sabadell",
+      "slug": "banco-sabadell",
+      "fullMonthCalendar": "1"
+    },
+    {
+      "id": "30169",
+      "name": "Fieldfisher",
+      "slug": "fieldfisher",
+      "fullMonthCalendar": "1"
+    },
+    {
+      "id": "90001",
+      "name": "Purever",
+      "slug": "purever",
+      "fullMonthCalendar": "1"
+    },
+    {
+      "id": "120001",
+      "name": "IBM",
+      "slug": "ibm",
+      "fullMonthCalendar": "1"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tfullMonthCalendar\n30144\tAdmiral\tadmiral\t1\n30148\tCBRE\tcbre\t1\n30159\tBanco Sabadell\tbanco-sabadell\t1\n30169\tFieldfisher\tfieldfisher\t1\n90001\tPurever\tpurever\t1\n120001\tIBM\tibm\t1\n",
+  "stderr": "",
+  "execution_time_ms": 62
+}

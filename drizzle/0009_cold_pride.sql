@@ -1,0 +1,1 @@
+ALTER TABLE `bookings` ADD `oficina` enum('Barcelona','Madrid','Málaga');

@@ -1,0 +1,17 @@
+{
+  "query": "\nUPDATE users \nSET password = '$2b$10$DH28Z0IJKpjFkqviDTD7guuMm0tYfiTDbDm8apEu9RJQpmVBj.Y3O'\nWHERE email = 'prueba-axa@test.com';\n\n-- Verificar actualización\nSELECT id, name, email, role, password FROM users WHERE email = 'prueba-axa@test.com';\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 1d5hijgR4Ge6ZqH.root --database ehPep9asg657TmCX4WxQxm --execute \nUPDATE users \nSET password = '$2b$10$DH28Z0IJKpjFkqviDTD7guuMm0tYfiTDbDm8apEu9RJQpmVBj.Y3O'\nWHERE email = 'prueba-axa@test.com';\n\n-- Verificar actualización\nSELECT id, name, email, role, password FROM users WHERE email = 'prueba-axa@test.com';\n",
+  "rows": [
+    {
+      "id": "690046",
+      "name": "Usuario Prueba AXA",
+      "email": "prueba-axa@test.com",
+      "role": "empresa",
+      "password": "$2b$10$DH28Z0IJKpjFkqviDTD7guuMm0tYfiTDbDm8apEu9RJQpmVBj.Y3O"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\temail\trole\tpassword\n690046\tUsuario Prueba AXA\tprueba-axa@test.com\tempresa\t$2b$10$DH28Z0IJKpjFkqviDTD7guuMm0tYfiTDbDm8apEu9RJQpmVBj.Y3O\n",
+  "stderr": "",
+  "execution_time_ms": 53
+}

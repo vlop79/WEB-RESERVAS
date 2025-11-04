@@ -1,0 +1,26 @@
+{
+  "query": "SELECT * FROM volunteers LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 1d5hijgR4Ge6ZqH.root --database ehPep9asg657TmCX4WxQxm --execute SELECT * FROM volunteers LIMIT 5;",
+  "rows": [
+    {
+      "id": "1",
+      "email": "ana.garcia@example.com",
+      "password": "$2b$10$PbTy6etfEYr2URlPDz2pLOGvxLgBzBBhMiyq78wxqBDcovjuvYejq",
+      "name": "Ana",
+      "surname": "García López",
+      "photoUrl": "NULL",
+      "position": "NULL",
+      "companyId": "NULL",
+      "birthDate": "NULL",
+      "phone": "+34 612 345 678",
+      "active": "1",
+      "createdAt": "2025-11-02 11:51:56",
+      "updatedAt": "2025-11-02 11:52:15",
+      "lastLoginAt": "2025-11-02 11:52:15"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\temail\tpassword\tname\tsurname\tphotoUrl\tposition\tcompanyId\tbirthDate\tphone\tactive\tcreatedAt\tupdatedAt\tlastLoginAt\n1\tana.garcia@example.com\t$2b$10$PbTy6etfEYr2URlPDz2pLOGvxLgBzBBhMiyq78wxqBDcovjuvYejq\tAna\tGarcía López\tNULL\tNULL\tNULL\tNULL\t+34 612 345 678\t1\t2025-11-02 11:51:56\t2025-11-02 11:52:15\t2025-11-02 11:52:15\n",
+  "stderr": "",
+  "execution_time_ms": 50
+}

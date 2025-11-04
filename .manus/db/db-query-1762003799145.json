@@ -1,0 +1,34 @@
+{
+  "query": "\n-- Crear usuarios empresa para Deloitte, Amazon y CBRE\nINSERT INTO users (openId, name, email, loginMethod, role, password, createdAt, updatedAt, lastSignedIn)\nVALUES \n  ('test-deloitte-001', 'Usuario Prueba Deloitte', 'prueba-deloitte@test.com', 'password', 'empresa', '$2b$10$g2w08ANQnZt2ldvlmwdX/eFQltcyKAfz0IdL16Pm7BnFB749wWZtO', NOW(), NOW(), NOW()),\n  ('test-amazon-001', 'Usuario Prueba Amazon', 'prueba-amazon@test.com', 'password', 'empresa', '$2b$10$4oDg4SLg.8ha8wBuXEvYfODzv75oBg8aoeBjIQ4.A3T/pMpD.6fue', NOW(), NOW(), NOW()),\n  ('test-cbre-001', 'Usuario Prueba CBRE', 'prueba-cbre@test.com', 'password', 'empresa', '$2b$10$AULHFDIgsOqT4tFxkdLjOuuzXwJ6AvA9DHCsIYwSgct4vDUaVB/mS', NOW(), NOW(), NOW());\n\n-- Obtener los IDs de los usuarios recién creados\nSET @deloitteUserId = (SELECT id FROM users WHERE openId = 'test-deloitte-001');\nSET @amazonUserId = (SELECT id FROM users WHERE openId = 'test-amazon-001');\nSET @cbreUserId = (SELECT id FROM users WHERE openId = 'test-cbre-001');\n\n-- Obtener los IDs de las empresas\nSET @deloitteCompanyId = (SELECT id FROM companies WHERE name = 'Deloitte');\nSET @amazonCompanyId = (SELECT id FROM companies WHERE name = 'Amazon');\nSET @cbreCompanyId = (SELECT id FROM companies WHERE name = 'CBRE');\n\n-- Vincular usuarios con sus empresas en companyUsers\nINSERT INTO companyUsers (userId, companyId, createdAt, updatedAt)\nVALUES \n  (@deloitteUserId, @deloitteCompanyId, NOW(), NOW()),\n  (@amazonUserId, @amazonCompanyId, NOW(), NOW()),\n  (@cbreUserId, @cbreCompanyId, NOW(), NOW());\n\n-- Verificar que se crearon correctamente\nSELECT \n  u.id as userId,\n  u.name as userName,\n  u.email,\n  u.role,\n  cu.companyId,\n  c.name as companyName\nFROM users u\nJOIN companyUsers cu ON u.id = cu.userId\nJOIN companies c ON cu.companyId = c.id\nWHERE u.openId IN ('test-deloitte-001', 'test-amazon-001', 'test-cbre-001');\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 1d5hijgR4Ge6ZqH.root --database ehPep9asg657TmCX4WxQxm --execute \n-- Crear usuarios empresa para Deloitte, Amazon y CBRE\nINSERT INTO users (openId, name, email, loginMethod, role, password, createdAt, updatedAt, lastSignedIn)\nVALUES \n  ('test-deloitte-001', 'Usuario Prueba Deloitte', 'prueba-deloitte@test.com', 'password', 'empresa', '$2b$10$g2w08ANQnZt2ldvlmwdX/eFQltcyKAfz0IdL16Pm7BnFB749wWZtO', NOW(), NOW(), NOW()),\n  ('test-amazon-001', 'Usuario Prueba Amazon', 'prueba-amazon@test.com', 'password', 'empresa', '$2b$10$4oDg4SLg.8ha8wBuXEvYfODzv75oBg8aoeBjIQ4.A3T/pMpD.6fue', NOW(), NOW(), NOW()),\n  ('test-cbre-001', 'Usuario Prueba CBRE', 'prueba-cbre@test.com', 'password', 'empresa', '$2b$10$AULHFDIgsOqT4tFxkdLjOuuzXwJ6AvA9DHCsIYwSgct4vDUaVB/mS', NOW(), NOW(), NOW());\n\n-- Obtener los IDs de los usuarios recién creados\nSET @deloitteUserId = (SELECT id FROM users WHERE openId = 'test-deloitte-001');\nSET @amazonUserId = (SELECT id FROM users WHERE openId = 'test-amazon-001');\nSET @cbreUserId = (SELECT id FROM users WHERE openId = 'test-cbre-001');\n\n-- Obtener los IDs de las empresas\nSET @deloitteCompanyId = (SELECT id FROM companies WHERE name = 'Deloitte');\nSET @amazonCompanyId = (SELECT id FROM companies WHERE name = 'Amazon');\nSET @cbreCompanyId = (SELECT id FROM companies WHERE name = 'CBRE');\n\n-- Vincular usuarios con sus empresas en companyUsers\nINSERT INTO companyUsers (userId, companyId, createdAt, updatedAt)\nVALUES \n  (@deloitteUserId, @deloitteCompanyId, NOW(), NOW()),\n  (@amazonUserId, @amazonCompanyId, NOW(), NOW()),\n  (@cbreUserId, @cbreCompanyId, NOW(), NOW());\n\n-- Verificar que se crearon correctamente\nSELECT \n  u.id as userId,\n  u.name as userName,\n  u.email,\n  u.role,\n  cu.companyId,\n  c.name as companyName\nFROM users u\nJOIN companyUsers cu ON u.id = cu.userId\nJOIN companies c ON cu.companyId = c.id\nWHERE u.openId IN ('test-deloitte-001', 'test-amazon-001', 'test-cbre-001');\n",
+  "rows": [
+    {
+      "userId": "690107",
+      "userName": "Usuario Prueba Amazon",
+      "email": "prueba-amazon@test.com",
+      "role": "empresa",
+      "companyId": "30158",
+      "companyName": "Amazon"
+    },
+    {
+      "userId": "690108",
+      "userName": "Usuario Prueba CBRE",
+      "email": "prueba-cbre@test.com",
+      "role": "empresa",
+      "companyId": "30148",
+      "companyName": "CBRE"
+    },
+    {
+      "userId": "690106",
+      "userName": "Usuario Prueba Deloitte",
+      "email": "prueba-deloitte@test.com",
+      "role": "empresa",
+      "companyId": "30150",
+      "companyName": "Deloitte"
+    }
+  ],
+  "messages": [],
+  "stdout": "userId\tuserName\temail\trole\tcompanyId\tcompanyName\n690107\tUsuario Prueba Amazon\tprueba-amazon@test.com\tempresa\t30158\tAmazon\n690108\tUsuario Prueba CBRE\tprueba-cbre@test.com\tempresa\t30148\tCBRE\n690106\tUsuario Prueba Deloitte\tprueba-deloitte@test.com\tempresa\t30150\tDeloitte\n",
+  "stderr": "",
+  "execution_time_ms": 92
+}

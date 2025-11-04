@@ -1,0 +1,9 @@
+{
+  "query": "INSERT INTO badges (volunteerId, badgeName, badgeDescription, badgeIcon, badgeType, earnedAt) VALUES \n(1, 'Iniciante', '¡Bienvenida al equipo! Has dado tu primer paso para transformar vidas', '🌟', 'milestone', NOW()),\n(1, 'Comprometida', 'Tu compromiso marca la diferencia. ¡5 mujeres ya cuentan contigo!', '💪', 'milestone', NOW()),\n(1, 'Experta', 'Eres un pilar de FQT. Has impactado la vida de 10+ mujeres', '🏆', 'milestone', NOW());",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 1d5hijgR4Ge6ZqH.root --database ehPep9asg657TmCX4WxQxm --execute INSERT INTO badges (volunteerId, badgeName, badgeDescription, badgeIcon, badgeType, earnedAt) VALUES \n(1, 'Iniciante', '¡Bienvenida al equipo! Has dado tu primer paso para transformar vidas', '🌟', 'milestone', NOW()),\n(1, 'Comprometida', 'Tu compromiso marca la diferencia. ¡5 mujeres ya cuentan contigo!', '💪', 'milestone', NOW()),\n(1, 'Experta', 'Eres un pilar de FQT. Has impactado la vida de 10+ mujeres', '🏆', 'milestone', NOW());",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 55
+}

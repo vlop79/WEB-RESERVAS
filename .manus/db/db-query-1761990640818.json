@@ -1,0 +1,75 @@
+{
+  "query": "SELECT * FROM slots WHERE companyId = 30144 AND date >= '2025-11-01' ORDER BY date, startTime LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 1d5hijgR4Ge6ZqH.root --database ehPep9asg657TmCX4WxQxm --execute SELECT * FROM slots WHERE companyId = 30144 AND date >= '2025-11-01' ORDER BY date, startTime LIMIT 5;",
+  "rows": [
+    {
+      "id": "120596",
+      "companyId": "30144",
+      "serviceTypeId": "30006",
+      "date": "2025-11-03",
+      "startTime": "10:00",
+      "endTime": "11:00",
+      "maxVolunteers": "2",
+      "currentVolunteers": "0",
+      "active": "1",
+      "createdAt": "2025-11-01 09:49:08",
+      "updatedAt": "2025-11-01 09:49:08"
+    },
+    {
+      "id": "120589",
+      "companyId": "30144",
+      "serviceTypeId": "30005",
+      "date": "2025-11-03",
+      "startTime": "11:00",
+      "endTime": "12:00",
+      "maxVolunteers": "3",
+      "currentVolunteers": "0",
+      "active": "1",
+      "createdAt": "2025-11-01 09:49:08",
+      "updatedAt": "2025-11-01 09:49:08"
+    },
+    {
+      "id": "120597",
+      "companyId": "30144",
+      "serviceTypeId": "30006",
+      "date": "2025-11-03",
+      "startTime": "11:00",
+      "endTime": "12:00",
+      "maxVolunteers": "2",
+      "currentVolunteers": "0",
+      "active": "1",
+      "createdAt": "2025-11-01 09:49:08",
+      "updatedAt": "2025-11-01 09:49:08"
+    },
+    {
+      "id": "120590",
+      "companyId": "30144",
+      "serviceTypeId": "30005",
+      "date": "2025-11-03",
+      "startTime": "12:00",
+      "endTime": "13:00",
+      "maxVolunteers": "3",
+      "currentVolunteers": "0",
+      "active": "1",
+      "createdAt": "2025-11-01 09:49:08",
+      "updatedAt": "2025-11-01 09:49:08"
+    },
+    {
+      "id": "120598",
+      "companyId": "30144",
+      "serviceTypeId": "30006",
+      "date": "2025-11-03",
+      "startTime": "12:00",
+      "endTime": "13:00",
+      "maxVolunteers": "2",
+      "currentVolunteers": "0",
+      "active": "1",
+      "createdAt": "2025-11-01 09:49:08",
+      "updatedAt": "2025-11-01 09:49:08"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tcompanyId\tserviceTypeId\tdate\tstartTime\tendTime\tmaxVolunteers\tcurrentVolunteers\tactive\tcreatedAt\tupdatedAt\n120596\t30144\t30006\t2025-11-03\t10:00\t11:00\t2\t0\t1\t2025-11-01 09:49:08\t2025-11-01 09:49:08\n120589\t30144\t30005\t2025-11-03\t11:00\t12:00\t3\t0\t1\t2025-11-01 09:49:08\t2025-11-01 09:49:08\n120597\t30144\t30006\t2025-11-03\t11:00\t12:00\t2\t0\t1\t2025-11-01 09:49:08\t2025-11-01 09:49:08\n120590\t30144\t30005\t2025-11-03\t12:00\t13:00\t3\t0\t1\t2025-11-01 09:49:08\t2025-11-01 09:49:08\n120598\t30144\t30006\t2025-11-03\t12:00\t13:00\t2\t0\t1\t2025-11-01 09:49:08\t2025-11-01 09:49:08\n",
+  "stderr": "",
+  "execution_time_ms": 56
+}

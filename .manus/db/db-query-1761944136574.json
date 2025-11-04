@@ -1,0 +1,32 @@
+{
+  "query": "SELECT * FROM service_types",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 1d5hijgR4Ge6ZqH.root --database ehPep9asg657TmCX4WxQxm --execute SELECT * FROM service_types",
+  "rows": [
+    {
+      "id": "30005",
+      "name": "Mentoring",
+      "slug": "mentoring",
+      "description": "Sesiones de mentoría virtuales con candidatas de FQT (Google Meet)",
+      "startHour": "11",
+      "endHour": "18",
+      "maxVolunteersPerSlot": "3",
+      "createdAt": "2025-10-31 20:55:24",
+      "modality": "virtual"
+    },
+    {
+      "id": "30006",
+      "name": "Estilismo",
+      "slug": "estilismo",
+      "description": "Sesiones presenciales de asesoramiento de imagen en oficinas FQT",
+      "startHour": "10",
+      "endHour": "17",
+      "maxVolunteersPerSlot": "2",
+      "createdAt": "2025-10-31 20:55:31",
+      "modality": "presencial"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tdescription\tstartHour\tendHour\tmaxVolunteersPerSlot\tcreatedAt\tmodality\n30005\tMentoring\tmentoring\tSesiones de mentoría virtuales con candidatas de FQT (Google Meet)\t11\t18\t3\t2025-10-31 20:55:24\tvirtual\n30006\tEstilismo\testilismo\tSesiones presenciales de asesoramiento de imagen en oficinas FQT\t10\t17\t2\t2025-10-31 20:55:31\tpresencial\n",
+  "stderr": "",
+  "execution_time_ms": 51
+}

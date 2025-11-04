@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE companies SET logoUrl = 'https://files.manuscdn.com/user_upload_by_module/session_file/108097131/qHhxZufzVJTzMGwh.png' WHERE slug = 'havas-media-group';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 1d5hijgR4Ge6ZqH.root --database ehPep9asg657TmCX4WxQxm --execute UPDATE companies SET logoUrl = 'https://files.manuscdn.com/user_upload_by_module/session_file/108097131/qHhxZufzVJTzMGwh.png' WHERE slug = 'havas-media-group';",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 155
+}

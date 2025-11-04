@@ -1,0 +1,9 @@
+{
+  "query": "INSERT INTO certificates (volunteerId, certificateType, certificateName, sessionsCount, pdfUrl) VALUES \n(1, 'completion', 'Certificado de Mentoring Nivel 1', 10, '/certificates/demo-cert-1.pdf'),\n(1, 'excellence', 'Certificado de Excelencia en Voluntariado', 10, '/certificates/demo-cert-2.pdf');",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 1d5hijgR4Ge6ZqH.root --database ehPep9asg657TmCX4WxQxm --execute INSERT INTO certificates (volunteerId, certificateType, certificateName, sessionsCount, pdfUrl) VALUES \n(1, 'completion', 'Certificado de Mentoring Nivel 1', 10, '/certificates/demo-cert-1.pdf'),\n(1, 'excellence', 'Certificado de Excelencia en Voluntariado', 10, '/certificates/demo-cert-2.pdf');",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 58
+}

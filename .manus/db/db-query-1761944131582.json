@@ -1,0 +1,9 @@
+{
+  "query": "INSERT INTO service_types (name, slug, description, startHour, endHour, maxVolunteersPerSlot, modality) VALUES ('Estilismo', 'estilismo', 'Sesiones presenciales de asesoramiento de imagen en oficinas FQT', 10, 17, 2, 'presencial')",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 1d5hijgR4Ge6ZqH.root --database ehPep9asg657TmCX4WxQxm --execute INSERT INTO service_types (name, slug, description, startHour, endHour, maxVolunteersPerSlot, modality) VALUES ('Estilismo', 'estilismo', 'Sesiones presenciales de asesoramiento de imagen en oficinas FQT', 10, 17, 2, 'presencial')",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 71
+}

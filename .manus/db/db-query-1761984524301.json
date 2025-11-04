@@ -1,0 +1,16 @@
+{
+  "query": "SELECT id, name, fullMonthCalendar, assignedDay FROM companies WHERE name LIKE '%Purever%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 1d5hijgR4Ge6ZqH.root --database ehPep9asg657TmCX4WxQxm --execute SELECT id, name, fullMonthCalendar, assignedDay FROM companies WHERE name LIKE '%Purever%';",
+  "rows": [
+    {
+      "id": "90001",
+      "name": "Purever",
+      "fullMonthCalendar": "1",
+      "assignedDay": ""
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tfullMonthCalendar\tassignedDay\n90001\tPurever\t1\t\n",
+  "stderr": "",
+  "execution_time_ms": 50
+}

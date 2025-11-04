@@ -1,0 +1,8 @@
+{
+  "query": "SELECT s.*, st.name as serviceName FROM slots s JOIN serviceTypes st ON s.serviceTypeId = st.id WHERE s.companyId = 30144 AND s.date >= '2025-11-01' ORDER BY s.date, s.startTime LIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 1d5hijgR4Ge6ZqH.root --database ehPep9asg657TmCX4WxQxm --execute SELECT s.*, st.name as serviceName FROM slots s JOIN serviceTypes st ON s.serviceTypeId = st.id WHERE s.companyId = 30144 AND s.date >= '2025-11-01' ORDER BY s.date, s.startTime LIMIT 10;",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1146 (42S02) at line 1: Table 'ehpep9asg657tmcx4wxqxm.serviceTypes' doesn't exist"
+  ]
+}

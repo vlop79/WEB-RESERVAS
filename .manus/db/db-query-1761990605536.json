@@ -1,0 +1,15 @@
+{
+  "query": "SELECT COUNT(*) as total, MIN(date) as primera, MAX(date) as ultima FROM slots WHERE companyId = 30144;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 1d5hijgR4Ge6ZqH.root --database ehPep9asg657TmCX4WxQxm --execute SELECT COUNT(*) as total, MIN(date) as primera, MAX(date) as ultima FROM slots WHERE companyId = 30144;",
+  "rows": [
+    {
+      "total": "294",
+      "primera": "2025-11-03",
+      "ultima": "2025-12-01"
+    }
+  ],
+  "messages": [],
+  "stdout": "total\tprimera\tultima\n294\t2025-11-03\t2025-12-01\n",
+  "stderr": "",
+  "execution_time_ms": 97
+}

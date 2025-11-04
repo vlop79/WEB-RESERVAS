@@ -1,0 +1,25 @@
+{
+  "query": "\n-- Obtener algunas empresas para crear usuarios de prueba\nSELECT id, name, slug \nFROM companies \nWHERE name IN ('Deloitte', 'Amazon', 'CBRE')\nLIMIT 3;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 1d5hijgR4Ge6ZqH.root --database ehPep9asg657TmCX4WxQxm --execute \n-- Obtener algunas empresas para crear usuarios de prueba\nSELECT id, name, slug \nFROM companies \nWHERE name IN ('Deloitte', 'Amazon', 'CBRE')\nLIMIT 3;\n",
+  "rows": [
+    {
+      "id": "30148",
+      "name": "CBRE",
+      "slug": "cbre"
+    },
+    {
+      "id": "30150",
+      "name": "Deloitte",
+      "slug": "deloitte"
+    },
+    {
+      "id": "30158",
+      "name": "Amazon",
+      "slug": "amazon"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\n30148\tCBRE\tcbre\n30150\tDeloitte\tdeloitte\n30158\tAmazon\tamazon\n",
+  "stderr": "",
+  "execution_time_ms": 47
+}

@@ -1,0 +1,1 @@
+ALTER TABLE `companies` ADD `assignedDay` varchar(100);

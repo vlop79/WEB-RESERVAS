@@ -1,0 +1,40 @@
+{
+  "query": "SELECT id, name, fullMonthCalendar, assignedDay FROM companies LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 1d5hijgR4Ge6ZqH.root --database ehPep9asg657TmCX4WxQxm --execute SELECT id, name, fullMonthCalendar, assignedDay FROM companies LIMIT 5;",
+  "rows": [
+    {
+      "id": "30141",
+      "name": "Acciona",
+      "fullMonthCalendar": "0",
+      "assignedDay": "3r Martes"
+    },
+    {
+      "id": "30142",
+      "name": "Adaptive Consulting",
+      "fullMonthCalendar": "0",
+      "assignedDay": "1r Lunes"
+    },
+    {
+      "id": "30143",
+      "name": "AQ Acentor",
+      "fullMonthCalendar": "0",
+      "assignedDay": "3r Jueves"
+    },
+    {
+      "id": "30144",
+      "name": "Admiral",
+      "fullMonthCalendar": "0",
+      "assignedDay": "NULL"
+    },
+    {
+      "id": "30145",
+      "name": "AXA",
+      "fullMonthCalendar": "0",
+      "assignedDay": "2º martes"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tfullMonthCalendar\tassignedDay\n30141\tAcciona\t0\t3r Martes\n30142\tAdaptive Consulting\t0\t1r Lunes\n30143\tAQ Acentor\t0\t3r Jueves\n30144\tAdmiral\t0\tNULL\n30145\tAXA\t0\t2º martes\n",
+  "stderr": "",
+  "execution_time_ms": 47
+}

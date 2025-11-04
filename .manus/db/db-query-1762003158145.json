@@ -1,0 +1,19 @@
+{
+  "query": "\n-- Verificar el usuario y su relación con la empresa\nSELECT \n  u.id as userId, \n  u.name, \n  u.email, \n  u.role,\n  cu.id as companyUserId,\n  cu.companyId,\n  c.name as companyName\nFROM users u\nLEFT JOIN companyUsers cu ON u.id = cu.userId\nLEFT JOIN companies c ON cu.companyId = c.id\nWHERE u.email = 'prueba-axa@test.com';\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 1d5hijgR4Ge6ZqH.root --database ehPep9asg657TmCX4WxQxm --execute \n-- Verificar el usuario y su relación con la empresa\nSELECT \n  u.id as userId, \n  u.name, \n  u.email, \n  u.role,\n  cu.id as companyUserId,\n  cu.companyId,\n  c.name as companyName\nFROM users u\nLEFT JOIN companyUsers cu ON u.id = cu.userId\nLEFT JOIN companies c ON cu.companyId = c.id\nWHERE u.email = 'prueba-axa@test.com';\n",
+  "rows": [
+    {
+      "userId": "690046",
+      "name": "Usuario Prueba AXA",
+      "email": "prueba-axa@test.com",
+      "role": "empresa",
+      "companyUserId": "1",
+      "companyId": "30145",
+      "companyName": "AXA"
+    }
+  ],
+  "messages": [],
+  "stdout": "userId\tname\temail\trole\tcompanyUserId\tcompanyId\tcompanyName\n690046\tUsuario Prueba AXA\tprueba-axa@test.com\tempresa\t1\t30145\tAXA\n",
+  "stderr": "",
+  "execution_time_ms": 72
+}

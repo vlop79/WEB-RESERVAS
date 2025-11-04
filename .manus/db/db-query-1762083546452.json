@@ -1,0 +1,16 @@
+{
+  "query": "SELECT id, name, email, role FROM users WHERE email = 'maria.lopez@accenture.com';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 1d5hijgR4Ge6ZqH.root --database ehPep9asg657TmCX4WxQxm --execute SELECT id, name, email, role FROM users WHERE email = 'maria.lopez@accenture.com';",
+  "rows": [
+    {
+      "id": "1260013",
+      "name": "María López - Accenture",
+      "email": "maria.lopez@accenture.com",
+      "role": "user"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\temail\trole\n1260013\tMaría López - Accenture\tmaria.lopez@accenture.com\tuser\n",
+  "stderr": "",
+  "execution_time_ms": 52
+}

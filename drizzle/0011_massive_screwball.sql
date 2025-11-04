@@ -1,0 +1,1 @@
+ALTER TABLE `companies` ADD `fullMonthCalendar` int DEFAULT 0 NOT NULL;

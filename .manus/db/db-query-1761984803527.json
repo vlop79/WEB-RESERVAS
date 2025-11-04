@@ -1,0 +1,19 @@
+{
+  "query": "SELECT c.id, c.name, c.assignedDay, c.fullMonthCalendar, COUNT(s.id) as total_slots, MIN(s.date) as primera_fecha, MAX(s.date) as ultima_fecha FROM companies c LEFT JOIN slots s ON c.id = s.companyId WHERE c.name LIKE '%Purever%' GROUP BY c.id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 1d5hijgR4Ge6ZqH.root --database ehPep9asg657TmCX4WxQxm --execute SELECT c.id, c.name, c.assignedDay, c.fullMonthCalendar, COUNT(s.id) as total_slots, MIN(s.date) as primera_fecha, MAX(s.date) as ultima_fecha FROM companies c LEFT JOIN slots s ON c.id = s.companyId WHERE c.name LIKE '%Purever%' GROUP BY c.id;",
+  "rows": [
+    {
+      "id": "90001",
+      "name": "Purever",
+      "assignedDay": "",
+      "fullMonthCalendar": "1",
+      "total_slots": "0",
+      "primera_fecha": "NULL",
+      "ultima_fecha": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tassignedDay\tfullMonthCalendar\ttotal_slots\tprimera_fecha\tultima_fecha\n90001\tPurever\t\t1\t0\tNULL\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 58
+}

@@ -1,0 +1,9 @@
+{
+  "query": "INSERT INTO volunteers (email, password, name, surname, phone, position, companyId, birthDate, photoUrl, active, createdAt, updatedAt) VALUES ('demo@fqt.com', '$2a$10$YQZ8vK5xJH0mXJ5kN8vZHOqK5YqK5YqK5YqK5YqK5YqK5YqK5YqK5Y', 'María', 'Voluntaria Demo', '+34 600 000 000', 'Mentora Senior', NULL, '1990-01-01', NULL, 1, NOW(), NOW())",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 1d5hijgR4Ge6ZqH.root --database ehPep9asg657TmCX4WxQxm --execute INSERT INTO volunteers (email, password, name, surname, phone, position, companyId, birthDate, photoUrl, active, createdAt, updatedAt) VALUES ('demo@fqt.com', '$2a$10$YQZ8vK5xJH0mXJ5kN8vZHOqK5YqK5YqK5YqK5YqK5YqK5YqK5YqK5Y', 'María', 'Voluntaria Demo', '+34 600 000 000', 'Mentora Senior', NULL, '1990-01-01', NULL, 1, NOW(), NOW())",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 59
+}

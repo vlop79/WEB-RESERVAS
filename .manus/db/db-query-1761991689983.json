@@ -1,0 +1,30 @@
+{
+  "query": "SELECT DISTINCT date, DAYOFWEEK(date) as dia_semana \nFROM slots \nWHERE companyId = 30156 \nORDER BY date \nLIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 1d5hijgR4Ge6ZqH.root --database ehPep9asg657TmCX4WxQxm --execute SELECT DISTINCT date, DAYOFWEEK(date) as dia_semana \nFROM slots \nWHERE companyId = 30156 \nORDER BY date \nLIMIT 10;",
+  "rows": [
+    {
+      "date": "2025-11-03",
+      "dia_semana": "2"
+    },
+    {
+      "date": "2025-11-10",
+      "dia_semana": "2"
+    },
+    {
+      "date": "2025-11-17",
+      "dia_semana": "2"
+    },
+    {
+      "date": "2025-11-24",
+      "dia_semana": "2"
+    },
+    {
+      "date": "2025-12-01",
+      "dia_semana": "2"
+    }
+  ],
+  "messages": [],
+  "stdout": "date\tdia_semana\n2025-11-03\t2\n2025-11-10\t2\n2025-11-17\t2\n2025-11-24\t2\n2025-12-01\t2\n",
+  "stderr": "",
+  "execution_time_ms": 55
+}

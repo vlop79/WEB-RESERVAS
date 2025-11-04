@@ -1,0 +1,22 @@
+{
+  "query": "SELECT id, name, fullMonthCalendar, assignedDay FROM companies WHERE fullMonthCalendar = 1;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 1d5hijgR4Ge6ZqH.root --database ehPep9asg657TmCX4WxQxm --execute SELECT id, name, fullMonthCalendar, assignedDay FROM companies WHERE fullMonthCalendar = 1;",
+  "rows": [
+    {
+      "id": "30159",
+      "name": "Banco Sabadell",
+      "fullMonthCalendar": "1",
+      "assignedDay": ""
+    },
+    {
+      "id": "90001",
+      "name": "Purever",
+      "fullMonthCalendar": "1",
+      "assignedDay": ""
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tfullMonthCalendar\tassignedDay\n30159\tBanco Sabadell\t1\t\n90001\tPurever\t1\t\n",
+  "stderr": "",
+  "execution_time_ms": 58
+}

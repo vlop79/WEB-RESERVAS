@@ -1,0 +1,8 @@
+{
+  "query": "INSERT INTO certificates (volunteerId, certificateName, certificateDescription, issuedDate, certificateUrl) VALUES \n(1, 'Certificado de Mentoring Nivel 1', 'Has completado exitosamente 10 sesiones de mentoring', '2024-11-20', '/certificates/demo-cert-1.pdf'),\n(1, 'Certificado de Excelencia en Voluntariado', 'Reconocimiento por tu compromiso y dedicación sostenida', '2024-12-15', '/certificates/demo-cert-2.pdf');",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 1d5hijgR4Ge6ZqH.root --database ehPep9asg657TmCX4WxQxm --execute INSERT INTO certificates (volunteerId, certificateName, certificateDescription, issuedDate, certificateUrl) VALUES \n(1, 'Certificado de Mentoring Nivel 1', 'Has completado exitosamente 10 sesiones de mentoring', '2024-11-20', '/certificates/demo-cert-1.pdf'),\n(1, 'Certificado de Excelencia en Voluntariado', 'Reconocimiento por tu compromiso y dedicación sostenida', '2024-12-15', '/certificates/demo-cert-2.pdf');",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 1: Unknown column 'certificateDescription' in 'field list'"
+  ]
+}

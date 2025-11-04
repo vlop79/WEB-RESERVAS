@@ -1,0 +1,214 @@
+{
+  "query": "SELECT id, name, slug, accountManager FROM companies ORDER BY name",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 1d5hijgR4Ge6ZqH.root --database ehPep9asg657TmCX4WxQxm --execute SELECT id, name, slug, accountManager FROM companies ORDER BY name",
+  "rows": [
+    {
+      "id": "30143",
+      "name": "AQ Acentor",
+      "slug": "aq-acentor",
+      "accountManager": "NULL"
+    },
+    {
+      "id": "30145",
+      "name": "AXA",
+      "slug": "axa",
+      "accountManager": "José Ángel Caballeiro"
+    },
+    {
+      "id": "30141",
+      "name": "Acciona",
+      "slug": "acciona",
+      "accountManager": "NULL"
+    },
+    {
+      "id": "30142",
+      "name": "Adaptive Consulting",
+      "slug": "adaptive-consulting",
+      "accountManager": "NULL"
+    },
+    {
+      "id": "30144",
+      "name": "Admiral",
+      "slug": "admiral",
+      "accountManager": "NULL"
+    },
+    {
+      "id": "30158",
+      "name": "Amazon",
+      "slug": "amazon",
+      "accountManager": "NULL"
+    },
+    {
+      "id": "30159",
+      "name": "Banco Sabadell",
+      "slug": "banco-sabadell",
+      "accountManager": "NULL"
+    },
+    {
+      "id": "30146",
+      "name": "Banco Santander",
+      "slug": "banco-santander",
+      "accountManager": "NULL"
+    },
+    {
+      "id": "30148",
+      "name": "CBRE",
+      "slug": "cbre",
+      "accountManager": "NULL"
+    },
+    {
+      "id": "30147",
+      "name": "Cargill",
+      "slug": "cargill",
+      "accountManager": "NULL"
+    },
+    {
+      "id": "30149",
+      "name": "Chep",
+      "slug": "chep",
+      "accountManager": "NULL"
+    },
+    {
+      "id": "30161",
+      "name": "Coface",
+      "slug": "coface",
+      "accountManager": "NULL"
+    },
+    {
+      "id": "30150",
+      "name": "Deloitte",
+      "slug": "deloitte",
+      "accountManager": "NULL"
+    },
+    {
+      "id": "30168",
+      "name": "Disney",
+      "slug": "disney",
+      "accountManager": "NULL"
+    },
+    {
+      "id": "30151",
+      "name": "EY",
+      "slug": "ey",
+      "accountManager": "NULL"
+    },
+    {
+      "id": "30169",
+      "name": "Fieldfisher",
+      "slug": "fieldfisher",
+      "accountManager": "NULL"
+    },
+    {
+      "id": "30170",
+      "name": "Gameloft",
+      "slug": "gameloft",
+      "accountManager": "NULL"
+    },
+    {
+      "id": "30162",
+      "name": "GruposSky",
+      "slug": "grupossky",
+      "accountManager": "NULL"
+    },
+    {
+      "id": "30163",
+      "name": "Havas Media Group",
+      "slug": "havas-media-group",
+      "accountManager": "NULL"
+    },
+    {
+      "id": "30164",
+      "name": "Isdin",
+      "slug": "isdin",
+      "accountManager": "NULL"
+    },
+    {
+      "id": "30172",
+      "name": "JPMorgan",
+      "slug": "jpmorgan",
+      "accountManager": "NULL"
+    },
+    {
+      "id": "30152",
+      "name": "KPMG",
+      "slug": "kpmg",
+      "accountManager": "NULL"
+    },
+    {
+      "id": "30165",
+      "name": "La Redoute",
+      "slug": "la-redoute",
+      "accountManager": "NULL"
+    },
+    {
+      "id": "30166",
+      "name": "Morningstar",
+      "slug": "morningstar",
+      "accountManager": "NULL"
+    },
+    {
+      "id": "30173",
+      "name": "PageGroup",
+      "slug": "pagegroup",
+      "accountManager": "NULL"
+    },
+    {
+      "id": "30153",
+      "name": "PwC",
+      "slug": "pwc",
+      "accountManager": "NULL"
+    },
+    {
+      "id": "30167",
+      "name": "RSM",
+      "slug": "rsm",
+      "accountManager": "NULL"
+    },
+    {
+      "id": "30154",
+      "name": "Roca Junyent",
+      "slug": "roca-junyent",
+      "accountManager": "NULL"
+    },
+    {
+      "id": "30155",
+      "name": "Stellantis",
+      "slug": "stellantis",
+      "accountManager": "NULL"
+    },
+    {
+      "id": "30156",
+      "name": "TotalEnergies",
+      "slug": "totalenergies",
+      "accountManager": "NULL"
+    },
+    {
+      "id": "30174",
+      "name": "Trane Technologies",
+      "slug": "trane-technologies",
+      "accountManager": "NULL"
+    },
+    {
+      "id": "30157",
+      "name": "Volotea",
+      "slug": "volotea",
+      "accountManager": "NULL"
+    },
+    {
+      "id": "60001",
+      "name": "Xerox",
+      "slug": "xerox",
+      "accountManager": "NULL"
+    },
+    {
+      "id": "30160",
+      "name": "Zurich",
+      "slug": "zurich",
+      "accountManager": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\taccountManager\n30143\tAQ Acentor\taq-acentor\tNULL\n30145\tAXA\taxa\tJosé Ángel Caballeiro\n30141\tAcciona\tacciona\tNULL\n30142\tAdaptive Consulting\tadaptive-consulting\tNULL\n30144\tAdmiral\tadmiral\tNULL\n30158\tAmazon\tamazon\tNULL\n30159\tBanco Sabadell\tbanco-sabadell\tNULL\n30146\tBanco Santander\tbanco-santander\tNULL\n30148\tCBRE\tcbre\tNULL\n30147\tCargill\tcargill\tNULL\n30149\tChep\tchep\tNULL\n30161\tCoface\tcoface\tNULL\n30150\tDeloitte\tdeloitte\tNULL\n30168\tDisney\tdisney\tNULL\n30151\tEY\tey\tNULL\n30169\tFieldfisher\tfieldfisher\tNULL\n30170\tGameloft\tgameloft\tNULL\n30162\tGruposSky\tgrupossky\tNULL\n30163\tHavas Media Group\thavas-media-group\tNULL\n30164\tIsdin\tisdin\tNULL\n30172\tJPMorgan\tjpmorgan\tNULL\n30152\tKPMG\tkpmg\tNULL\n30165\tLa Redoute\tla-redoute\tNULL\n30166\tMorningstar\tmorningstar\tNULL\n30173\tPageGroup\tpagegroup\tNULL\n30153\tPwC\tpwc\tNULL\n30167\tRSM\trsm\tNULL\n30154\tRoca Junyent\troca-junyent\tNULL\n30155\tStellantis\tstellantis\tNULL\n30156\tTotalEnergies\ttotalenergies\tNULL\n30174\tTrane Technologies\ttrane-technologies\tNULL\n30157\tVolotea\tvolotea\tNULL\n60001\tXerox\txerox\tNULL\n30160\tZurich\tzurich\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 48
+}

@@ -1,0 +1,18 @@
+{
+  "query": "\n-- Primero obtener el ID de AXA\nSET @axaId = (SELECT id FROM companies WHERE name LIKE '%AXA%' LIMIT 1);\n\n-- Crear usuario empresa de prueba (contraseña: test123)\n-- Hash bcrypt de \"test123\": $2b$10$rQ8K8mZ4Z4Z4Z4Z4Z4Z4ZeK8K8mZ4Z4Z4Z4Z4Z4Z4ZeK8K8mZ4Z4Z\nINSERT INTO users (openId, name, email, password, loginMethod, role, createdAt, updatedAt, lastSignedIn)\nVALUES ('test-company-axa-001', 'Usuario Prueba AXA', 'prueba-axa@test.com', '$2b$10$YQRiQE.5PpBkqjp.8ssW.OW3R3NVR9wgOHoABC31dKK4T.p5wROm.', 'password', 'empresa', NOW(), NOW(), NOW());\n\n-- Obtener el ID del usuario recién creado\nSET @userId = LAST_INSERT_ID();\n\n-- Vincular usuario con empresa AXA en companyUsers\nINSERT INTO companyUsers (userId, companyId, createdAt, updatedAt)\nVALUES (@userId, @axaId, NOW(), NOW());\n\n-- Mostrar resultado\nSELECT u.id, u.name, u.email, u.role, cu.companyId, c.name as companyName\nFROM users u\nLEFT JOIN companyUsers cu ON u.id = cu.userId\nLEFT JOIN companies c ON cu.companyId = c.id\nWHERE u.email = 'prueba-axa@test.com';\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 1d5hijgR4Ge6ZqH.root --database ehPep9asg657TmCX4WxQxm --execute \n-- Primero obtener el ID de AXA\nSET @axaId = (SELECT id FROM companies WHERE name LIKE '%AXA%' LIMIT 1);\n\n-- Crear usuario empresa de prueba (contraseña: test123)\n-- Hash bcrypt de \"test123\": $2b$10$rQ8K8mZ4Z4Z4Z4Z4Z4Z4ZeK8K8mZ4Z4Z4Z4Z4Z4Z4ZeK8K8mZ4Z4Z\nINSERT INTO users (openId, name, email, password, loginMethod, role, createdAt, updatedAt, lastSignedIn)\nVALUES ('test-company-axa-001', 'Usuario Prueba AXA', 'prueba-axa@test.com', '$2b$10$YQRiQE.5PpBkqjp.8ssW.OW3R3NVR9wgOHoABC31dKK4T.p5wROm.', 'password', 'empresa', NOW(), NOW(), NOW());\n\n-- Obtener el ID del usuario recién creado\nSET @userId = LAST_INSERT_ID();\n\n-- Vincular usuario con empresa AXA en companyUsers\nINSERT INTO companyUsers (userId, companyId, createdAt, updatedAt)\nVALUES (@userId, @axaId, NOW(), NOW());\n\n-- Mostrar resultado\nSELECT u.id, u.name, u.email, u.role, cu.companyId, c.name as companyName\nFROM users u\nLEFT JOIN companyUsers cu ON u.id = cu.userId\nLEFT JOIN companies c ON cu.companyId = c.id\nWHERE u.email = 'prueba-axa@test.com';\n",
+  "rows": [
+    {
+      "id": "690046",
+      "name": "Usuario Prueba AXA",
+      "email": "prueba-axa@test.com",
+      "role": "empresa",
+      "companyId": "30145",
+      "companyName": "AXA"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\temail\trole\tcompanyId\tcompanyName\n690046\tUsuario Prueba AXA\tprueba-axa@test.com\tempresa\t30145\tAXA\n",
+  "stderr": "",
+  "execution_time_ms": 75
+}

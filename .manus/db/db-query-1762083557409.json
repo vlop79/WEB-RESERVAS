@@ -1,0 +1,9 @@
+{
+  "query": "INSERT INTO users (openId, name, email, loginMethod, role, createdAt, updatedAt, lastSignedIn)\nVALUES (\n  'test-admin-fqt-team-67890',\n  'Laura Martínez - Equipo FQT',\n  'laura.martinez@quierotrabajo.org',\n  'email',\n  'admin',\n  NOW(),\n  NOW(),\n  NOW()\n)\nON DUPLICATE KEY UPDATE\n  name = 'Laura Martínez - Equipo FQT',\n  email = 'laura.martinez@quierotrabajo.org',\n  role = 'admin',\n  lastSignedIn = NOW();",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 1d5hijgR4Ge6ZqH.root --database ehPep9asg657TmCX4WxQxm --execute INSERT INTO users (openId, name, email, loginMethod, role, createdAt, updatedAt, lastSignedIn)\nVALUES (\n  'test-admin-fqt-team-67890',\n  'Laura Martínez - Equipo FQT',\n  'laura.martinez@quierotrabajo.org',\n  'email',\n  'admin',\n  NOW(),\n  NOW(),\n  NOW()\n)\nON DUPLICATE KEY UPDATE\n  name = 'Laura Martínez - Equipo FQT',\n  email = 'laura.martinez@quierotrabajo.org',\n  role = 'admin',\n  lastSignedIn = NOW();",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 55
+}

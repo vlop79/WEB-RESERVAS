@@ -1,0 +1,16 @@
+{
+  "query": "SELECT id, email, name, surname FROM volunteers WHERE email = 'demo@fqt.com';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 1d5hijgR4Ge6ZqH.root --database ehPep9asg657TmCX4WxQxm --execute SELECT id, email, name, surname FROM volunteers WHERE email = 'demo@fqt.com';",
+  "rows": [
+    {
+      "id": "30001",
+      "email": "demo@fqt.com",
+      "name": "María",
+      "surname": "Voluntaria Demo"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\temail\tname\tsurname\n30001\tdemo@fqt.com\tMaría\tVoluntaria Demo\n",
+  "stderr": "",
+  "execution_time_ms": 62
+}
