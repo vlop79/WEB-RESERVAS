@@ -2,7 +2,7 @@ import { useVolunteerAuth } from "@/hooks/useVolunteerAuth";
 import { useLocation } from "wouter";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { LogOut, User, Award, TrendingUp, Building2, BookOpen, GraduationCap, Trophy } from "lucide-react";
+import { LogOut, User, Award, TrendingUp, Building2, BookOpen, GraduationCap, Trophy, Calendar } from "lucide-react";
 import { APP_LOGO } from "@/const";
 
 interface VolunteerLayoutProps {
@@ -36,6 +36,7 @@ export default function VolunteerLayout({ children }: VolunteerLayoutProps) {
 
   const menuItems = [
     { icon: TrendingUp, label: "Dashboard", path: "/portal-voluntario/dashboard" },
+    { icon: Calendar, label: "Reservar Sesión", path: "/portal-voluntario/reservar" },
     { icon: User, label: "Mi Perfil", path: "/portal-voluntario/perfil" },
     { icon: Award, label: "Mi Impacto", path: "/portal-voluntario/impacto" },
     { icon: Building2, label: "Impacto de mi Empresa", path: "/portal-voluntario/empresa" },

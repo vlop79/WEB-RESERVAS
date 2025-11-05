@@ -919,3 +919,54 @@
 - [x] Corregir error "Unexpected token '<', "<!doctype "... is not valid JSON" en página principal
 - [x] Verificar configuración de rutas tRPC en servidor
 - [x] Asegurar que todas las llamadas tRPC devuelven JSON correctamente
+
+## Añadir Nuevo Administrador
+- [x] Añadir a Dora Bárcenas (comunicacion@quierotrabajo.org) como administradora del sistema
+- [x] Actualizar lista de emails autorizados en el código
+- [x] Verificar que puede acceder al panel de administración
+
+## Configurar Acceso OAuth para Dora Bárcenas
+- [x] Modificar schema para permitir openId en usuarios con contraseña
+- [x] Implementar endpoint de vinculación de cuentas
+- [x] Actualizar lógica de autenticación OAuth para vincular cuentas existentes
+- [ ] Probar que funciona el login con Google y con contraseña
+
+## Corregir Error 404 en Ruta /volunteer
+- [x] Revisar configuración de rutas en App.tsx
+- [x] Verificar que existe el componente VolunteerPortal
+- [x] Corregir la ruta y verificar que funciona
+
+## Revisar Integraciones Google Calendar y Meet
+- [x] Buscar implementación de Google Calendar API en el código
+- [x] Buscar implementación de Google Meet en el código
+- [x] Verificar si las credenciales están configuradas
+- [x] Documentar estado actual de las integraciones
+
+## Crear Pestaña Acceso Voluntarios y Modificar Pestaña Empresa con Rankings
+- [ ] Analizar componentes existentes del Design System (tabs, cards, filtros, rankings)
+- [ ] Crear endpoints backend para acciones de voluntariado (GET /api/volunteer-actions)
+- [ ] Crear endpoints backend para rankings (GET /api/rankings/volunteers y /companies)
+- [ ] Implementar pestaña "Acceso voluntarios" con header de métricas personales
+- [ ] Implementar listado de acciones con filtros (estado, fecha, modalidad) y buscador
+- [ ] Añadir CTAs (Apuntarme / Cancelar / Ver detalle) en acciones
+- [ ] Modificar pestaña "Empresa" para incluir ranking de voluntarios
+- [ ] Modificar pestaña "Empresa" para incluir ranking de empresas
+- [ ] Implementar lógica de ordenación y desempate en rankings (score → hours → sessions → nombre)
+- [ ] Añadir paginación servidor (20 ítems) con skeletons
+- [ ] Implementar filtros persistentes por pestaña con botón "Restablecer"
+- [ ] Verificar coherencia visual con Design System (colores, tipografías, espaciados)
+- [ ] Añadir accesibilidad (tabs por teclado, contraste WCAG AA, aria-*)
+- [ ] Implementar telemetría (tab_viewed, ranking_viewed, filter_changed, action_applied)
+- [ ] Verificar roles y permisos (volunteer, company_admin, fqt_admin)
+
+## Crear Pestaña "Reservar Sesión" en Portal de Voluntarios
+- [ ] Añadir nueva pestaña "Reservar Sesión" en VolunteerLayout
+- [ ] Crear componente VolunteerBooking que muestre el listado de empresas
+- [ ] Integrar con el sistema de reservas público existente
+- [ ] Mantener coherencia visual con Design System
+
+## Modificar Pestaña "Impacto de mi Empresa" con Rankings
+- [ ] Añadir sección de ranking de voluntarios (reutilizar componente de Rankings)
+- [ ] Añadir sección de ranking de empresas (reutilizar componente de Rankings)
+- [ ] Mantener secciones actuales sin cambios
+- [ ] Verificar coherencia visual con Design System

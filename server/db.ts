@@ -1236,3 +1236,29 @@ export async function getAverageRatingByCompany(companyId: number): Promise<numb
   
   return result[0]?.avgRating || 0;
 }
+
+/**
+ * Link OAuth account (openId) to existing password-based user account
+ * This allows users to login with both password and OAuth
+ */
+export async function linkOAuthToUser(userId: number, openId: string): Promise<void> {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+
+  try {
+    await db.update(users)
+      .set({ 
+        openId: openId,
+        lastSignedIn: new Date(),
+        updatedAt: new Date(),
+      })
+      .where(eq(users.id, userId));
+    
+    console.log(`[Database] Successfully linked openId ${openId} to user ${userId}`);
+  } catch (error) {
+    console.error("[Database] Failed to link OAuth account:", error);
+    throw error;
+  }
+}

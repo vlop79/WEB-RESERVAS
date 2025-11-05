@@ -28,13 +28,26 @@ export function registerOAuthRoutes(app: Express) {
         return;
       }
 
-      await db.upsertUser({
-        openId: userInfo.openId,
-        name: userInfo.name || null,
-        email: userInfo.email ?? null,
-        loginMethod: userInfo.loginMethod ?? userInfo.platform ?? null,
-        lastSignedIn: new Date(),
-      });
+      // Check if user with this email already exists (password account)
+      let existingUser = null;
+      if (userInfo.email) {
+        existingUser = await db.getUserByEmail(userInfo.email);
+      }
+
+      if (existingUser && !existingUser.openId) {
+        // User exists with password but no openId - link the accounts
+        console.log('[OAuth] Linking OAuth account to existing password account:', userInfo.email);
+        await db.linkOAuthToUser(existingUser.id, userInfo.openId);
+      } else {
+        // Normal upsert flow
+        await db.upsertUser({
+          openId: userInfo.openId,
+          name: userInfo.name || null,
+          email: userInfo.email ?? null,
+          loginMethod: userInfo.loginMethod ?? userInfo.platform ?? null,
+          lastSignedIn: new Date(),
+        });
+      }
 
       const sessionToken = await sdk.createSessionToken(userInfo.openId, {
         name: userInfo.name || "",

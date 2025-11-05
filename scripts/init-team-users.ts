@@ -32,6 +32,12 @@ const TEAM_MEMBERS = [
     password: 'Proyecto2025!',
     role: 'user' as const,
   },
+  {
+    email: 'comunicacion@quierotrabajo.org',
+    name: 'Dora Bárcenas',
+    password: 'Comunicacion2025!',
+    role: 'admin' as const,
+  },
 ];
 
 async function initTeamUsers() {

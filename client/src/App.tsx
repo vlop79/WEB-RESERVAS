@@ -29,6 +29,7 @@ import VolunteerCompanyImpact from "./pages/VolunteerCompanyImpact";
 import VolunteerLibrary from "./pages/VolunteerLibrary";
 import VolunteerCourses from "./pages/VolunteerCourses";
 import VolunteerForgotPassword from "./pages/VolunteerForgotPassword";
+import VolunteerBooking from "./pages/VolunteerBooking";
 
 
 function Router() {
@@ -39,10 +40,12 @@ function Router() {
       <Route path={"/faqs"} component={FAQs} />
       <Route path={"/reservar/:slug"} component={Booking} />
       <Route path={"/valorar"} component={RatePage} />
+      <Route path={"/volunteer"} component={VolunteerDashboard} />
       <Route path={"/portal-voluntario/login"} component={VolunteerLogin} />
       <Route path={"/portal-voluntario/registro"} component={VolunteerRegister} />
       <Route path={"/portal-voluntario/recuperar-contrasena"} component={VolunteerForgotPassword} />
       <Route path={"/portal-voluntario/dashboard"} component={VolunteerDashboard} />
+      <Route path={"/portal-voluntario/reservar"} component={VolunteerBooking} />
       <Route path={"/portal-voluntario/perfil"} component={VolunteerProfile} />
       <Route path={"/portal-voluntario/rankings"} component={VolunteerRankings} />
       <Route path={"/portal-voluntario/certificados"} component={VolunteerCertificates} />
