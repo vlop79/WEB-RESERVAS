@@ -1369,3 +1369,4 @@ export async function getDashboardStats() {
     bookingsByMonth,
     topCompanies,
   };
+}
