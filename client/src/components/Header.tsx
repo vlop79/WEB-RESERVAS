@@ -23,11 +23,11 @@ export default function Header({ showAdminButton = true }: HeaderProps) {
                 Accede como Empresa
               </button>
             </Link>
-            <Link href="/admin">
+            <a href="https://web-reservas-production.up.railway.app/admin" target="_blank" rel="noopener noreferrer">
               <button className="rounded-md bg-primary text-white px-4 py-2 text-sm font-medium hover:bg-primary/90 transition-colors">
                 Admin
               </button>
-            </Link>
+            </a>
           </div>
         )}
       </div>
