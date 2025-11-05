@@ -159,7 +159,10 @@ export async function ensureSlotsForCompany(
 
   // Parsear los patrones de días asignados (hasta 3)
   const assignedDays = [assignedDay, assignedDay2, assignedDay3].filter(day => day && day !== '');
+  console.log(`[Auto-generate] Días asignados recibidos:`, { assignedDay, assignedDay2, assignedDay3 });
+  console.log(`[Auto-generate] Días filtrados:`, assignedDays);
   const dayPatterns = assignedDays.map(day => parseAssignedDayPattern(day!)).filter(p => p !== null);
+  console.log(`[Auto-generate] Patrones parseados:`, dayPatterns);
   const assignedDayNums = assignedDays
     .map(day => {
       const pattern = parseAssignedDayPattern(day!);
