@@ -234,12 +234,12 @@ export default function Booking() {
                 <CardHeader>
                   <CardTitle>Selecciona el tipo de sesión</CardTitle>
                   <CardDescription>
-                    Elige entre Mentoring o Estilismo según tus preferencias
+                    Elige entre Mentoring, Estilismo o Shadowing según tus preferencias y experiencia
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <Tabs value={selectedService} onValueChange={setSelectedService}>
-                    <TabsList className="grid w-full grid-cols-2">
+                    <TabsList className="grid w-full grid-cols-3">
                       <TabsTrigger value="mentoring">
                         <Users className="mr-2 h-4 w-4" />
                         Mentoring
@@ -247,6 +247,10 @@ export default function Booking() {
                       <TabsTrigger value="estilismo">
                         <Users className="mr-2 h-4 w-4" />
                         Estilismo
+                      </TabsTrigger>
+                      <TabsTrigger value="shadowing">
+                        <Users className="mr-2 h-4 w-4" />
+                        Shadowing
                       </TabsTrigger>
                     </TabsList>
                     <TabsContent value="mentoring" className="mt-4">
@@ -276,6 +280,22 @@ export default function Booking() {
                             </p>
                             <Badge className="mt-3" variant="secondary">
                               2 voluntarias por sesión
+                            </Badge>
+                          </div>
+                        </div>
+                      </div>
+                    </TabsContent>
+                    <TabsContent value="shadowing" className="mt-4">
+                      <div className="rounded-lg bg-card border-2 border-primary/20 p-6 shadow-sm">
+                        <div className="flex items-start gap-4">
+                          <img src="/mentoring-icon.jpg" alt="Shadowing" className="h-16 w-16 rounded-full" />
+                          <div className="flex-1">
+                            <h3 className="text-lg font-bold text-primary">Shadowing (Mentoring a la Sombra)</h3>
+                            <p className="mt-2 text-sm text-muted-foreground">
+                              Ideal para voluntarios con menos experiencia. Acompaña a un mentor experimentado durante una sesión real de mentoring y aprende observando. Horario: 11:00 - 18:00. Modalidad virtual.
+                            </p>
+                            <Badge className="mt-3" variant="secondary">
+                              2 voluntarios por sesión (1 mentor + 1 en shadowing)
                             </Badge>
                           </div>
                         </div>

@@ -49,17 +49,17 @@ export type Company = typeof companies.$inferSelect;
 export type InsertCompany = typeof companies.$inferInsert;
 
 /**
- * Tipos de servicio (Mentoring, Estilismo)
+ * Tipos de servicio (Mentoring, Estilismo, Shadowing)
  */
 export const serviceTypes = mysqlTable("service_types", {
   id: int("id").autoincrement().primaryKey(),
-  name: varchar("name", { length: 100 }).notNull(), // "Mentoring" o "Estilismo"
+  name: varchar("name", { length: 100 }).notNull(), // "Mentoring", "Estilismo" o "Shadowing"
   slug: varchar("slug", { length: 100 }).notNull().unique(),
   description: text("description"),
-  startHour: int("startHour").notNull(), // 11 para Mentoring, 10 para Estilismo
-  endHour: int("endHour").notNull(), // 18 para Mentoring, 17 para Estilismo
-  maxVolunteersPerSlot: int("maxVolunteersPerSlot").default(1).notNull(), // 3 para Mentoring, 2 para Estilismo
-  modality: mysqlEnum("modality", ["virtual", "presencial"]).notNull(), // virtual para Mentoring, presencial para Estilismo
+  startHour: int("startHour").notNull(), // 11 para Mentoring/Shadowing, 10 para Estilismo
+  endHour: int("endHour").notNull(), // 18 para Mentoring/Shadowing, 17 para Estilismo
+  maxVolunteersPerSlot: int("maxVolunteersPerSlot").default(1).notNull(), // 3 para Mentoring, 2 para Estilismo/Shadowing
+  modality: mysqlEnum("modality", ["virtual", "presencial"]).notNull(), // virtual para Mentoring/Shadowing, presencial para Estilismo
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
 

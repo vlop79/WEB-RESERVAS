@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { Home } from "lucide-react";
 
 interface HeaderProps {
   showAdminButton?: boolean;
@@ -8,9 +9,17 @@ export default function Header({ showAdminButton = true }: HeaderProps) {
   return (
     <header className="bg-white shadow-md border-b">
       <div className="container mx-auto flex items-center justify-between py-4 px-6">
-        <Link href="/" className="flex items-center hover:opacity-90 transition-opacity">
-          <img src="/logo-fqt.jpg" alt="Fundación Quiero Trabajo" className="h-12 w-auto" />
-        </Link>
+        <div className="flex items-center gap-4">
+          <Link href="/" className="flex items-center hover:opacity-90 transition-opacity">
+            <img src="/logo-fqt.jpg" alt="Fundación Quiero Trabajo" className="h-12 w-auto" />
+          </Link>
+          <Link href="/">
+            <button className="flex items-center gap-2 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors">
+              <Home className="h-4 w-4" />
+              Inicio
+            </button>
+          </Link>
+        </div>
         {showAdminButton && (
           <div className="flex items-center gap-3">
             <Link href="/portal-voluntario/login">
