@@ -1008,3 +1008,10 @@
 - [x] Actualizar rutas en App.tsx
 - [x] Probar navegación entre pestañas
 - [x] Verificar que cada empresa solo ve sus datos
+
+## Exportación CSV en Portal de Empresas
+- [x] Implementar función de exportación a CSV en CompanyImpact
+- [x] Añadir botón de descarga en la sección de reservas
+- [x] Exportar datos filtrados según el filtro de fecha activo
+- [x] Incluir todas las columnas relevantes (fecha, hora, servicio, voluntaria, estado)
+- [x] Probar exportación con diferentes filtros

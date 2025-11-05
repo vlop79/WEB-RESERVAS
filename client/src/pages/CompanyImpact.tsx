@@ -3,8 +3,9 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Calendar, Loader2, Heart, Filter, BarChart3 } from "lucide-react";
+import { Calendar, Loader2, Heart, Filter, BarChart3, Download } from "lucide-react";
 import { useState, useMemo } from "react";
+import { Button } from "@/components/ui/button";
 
 interface CompanyImpactProps {
   company: {
@@ -59,6 +60,51 @@ export default function CompanyImpact({ company }: CompanyImpactProps) {
       }
     });
   }, [bookings, dateFilter]);
+
+  // Función para exportar a CSV
+  const exportToCSV = () => {
+    if (!filteredBookings || filteredBookings.length === 0) {
+      return;
+    }
+
+    // Crear encabezados CSV
+    const headers = ['Fecha', 'Hora Inicio', 'Hora Fin', 'Servicio', 'Nombre Voluntaria', 'Email Voluntaria', 'Teléfono', 'Estado'];
+    
+    // Crear filas CSV
+    const rows = filteredBookings.map((booking: any) => [
+      new Date(booking.bookingDate).toLocaleDateString('es-ES', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+      }),
+      booking.startTime,
+      booking.endTime,
+      booking.serviceType === 'mentoring' ? 'Mentoring' : 'Estilismo',
+      booking.candidateName,
+      booking.candidateEmail,
+      booking.candidatePhone || '',
+      booking.status === 'confirmed' ? 'Confirmada' : 'Pendiente'
+    ]);
+
+    // Combinar encabezados y filas
+    const csvContent = [
+      headers.join(','),
+      ...rows.map(row => row.map(cell => `"${cell}"`).join(','))
+    ].join('\n');
+
+    // Crear blob y descargar
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    
+    link.setAttribute('href', url);
+    link.setAttribute('download', `reservas_${company.slug}_${new Date().toISOString().split('T')[0]}.csv`);
+    link.style.visibility = 'hidden';
+    
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   if (bookingsLoading || statsLoading) {
     return (
@@ -151,7 +197,17 @@ export default function CompanyImpact({ company }: CompanyImpactProps) {
                 Listado de todas las sesiones reservadas en {company.name}
               </CardDescription>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={exportToCSV}
+                disabled={filteredBookings.length === 0}
+                className="border-[#ea6852] text-[#ea6852] hover:bg-[#ea6852] hover:text-white"
+              >
+                <Download className="h-4 w-4 mr-2" />
+                Exportar CSV
+              </Button>
               <Filter className="h-4 w-4 text-gray-500" />
               <Select value={dateFilter} onValueChange={setDateFilter}>
                 <SelectTrigger className="w-[180px]">
