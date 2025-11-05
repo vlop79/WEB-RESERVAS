@@ -95,17 +95,13 @@ export default function VolunteerLogin() {
             <div className="text-center text-sm space-y-2">
               <div className="text-muted-foreground">
                 ¿No tienes cuenta?{" "}
-                <Link href="/portal-voluntario/registro">
-                  <a className="font-medium underline" style={{ color: "#ea6852" }}>
-                    Regístrate aquí
-                  </a>
+                <Link href="/portal-voluntario/registro" className="font-medium underline" style={{ color: "#ea6852" }}>
+                  Regístrate aquí
                 </Link>
               </div>
               <div>
-                <Link href="/portal-voluntario/recuperar-contrasena">
-                  <a className="text-gray-600 hover:underline text-sm">
-                    ¿Olvidaste tu contraseña?
-                  </a>
+                <Link href="/portal-voluntario/recuperar-contrasena" className="text-gray-600 hover:underline text-sm">
+                  ¿Olvidaste tu contraseña?
                 </Link>
               </div>
             </div>

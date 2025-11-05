@@ -13,6 +13,11 @@ export default function Header({ showAdminButton = true }: HeaderProps) {
         </Link>
         {showAdminButton && (
           <div className="flex items-center gap-3">
+            <Link href="/portal-voluntario/login">
+              <button className="rounded-md border-2 border-[#ea6852] text-[#ea6852] px-4 py-2 text-sm font-medium hover:bg-[#ea6852] hover:text-white transition-colors">
+                Accede como Voluntario
+              </button>
+            </Link>
             <Link href="/login">
               <button className="rounded-md border-2 border-[#ea6852] text-[#ea6852] px-4 py-2 text-sm font-medium hover:bg-[#ea6852] hover:text-white transition-colors">
                 Accede como Empresa

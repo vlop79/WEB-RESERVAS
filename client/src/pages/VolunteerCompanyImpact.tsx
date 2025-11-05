@@ -2,6 +2,8 @@ import { useVolunteerAuth } from "@/hooks/useVolunteerAuth";
 import VolunteerLayout from "@/components/VolunteerLayout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Building2, Users, TrendingUp, Award, Calendar, Target, Star } from "lucide-react";
+import RankingVolunteers from "@/components/RankingVolunteers";
+import RankingCompanies from "@/components/RankingCompanies";
 
 export default function VolunteerCompanyImpact() {
   const { volunteer, isLoading: authLoading } = useVolunteerAuth();
@@ -166,57 +168,33 @@ export default function VolunteerCompanyImpact() {
           </CardContent>
         </Card>
 
-        {/* Top Volunteers */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Award className="h-5 w-5 text-[#ea6852]" />
-              Top Voluntarios de {companyStats.companyName}
-            </CardTitle>
-            <CardDescription>Los colaboradores más activos</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-3">
-              {topVolunteers.map((vol, index) => (
-                <div
-                  key={index}
-                  className={`flex items-center justify-between p-4 rounded-lg border ${
-                    vol.name === "Ana García López"
-                      ? "bg-[#ea6852]/10 border-[#ea6852]"
-                      : "bg-gray-50"
-                  }`}
-                >
-                  <div className="flex items-center gap-4">
-                    <div
-                      className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${
-                        index === 0
-                          ? "bg-yellow-400 text-yellow-900"
-                          : index === 1
-                          ? "bg-gray-300 text-gray-700"
-                          : "bg-orange-300 text-orange-900"
-                      }`}
-                    >
-                      {index + 1}
-                    </div>
-                    <div>
-                      <p className="font-semibold text-gray-900 flex items-center gap-2">
-                        {vol.name}
-                        {vol.name === "Ana García López" && (
-                          <span className="text-xs bg-[#ea6852] text-white px-2 py-1 rounded">Tú</span>
-                        )}
-                      </p>
-                      <p className="text-sm text-gray-600">{vol.position}</p>
-                    </div>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-2xl font-bold text-[#ea6852]">{vol.sessions}</p>
-                    <p className="text-xs text-gray-600">sesiones</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
+        {/* Top Volunteers - Componente Reutilizable */}
+        <RankingVolunteers
+          volunteers={topVolunteers.map((vol, index) => ({
+            id: index + 1,
+            name: vol.name,
+            sessions: vol.sessions,
+            position: vol.position,
+            company: companyStats.companyName,
+          }))}
+          currentVolunteerId={3} // Ana García López
+          title={`Top Voluntarios de ${companyStats.companyName}`}
+          description="Los colaboradores más activos"
+        />
+
+        {/* Ranking de Empresas - Nuevo */}
+        <RankingCompanies
+          companies={[
+            { id: 1, name: "AXA", volunteers: 15, sessions: 120, logo: "🏢" },
+            { id: 2, name: "Coca-Cola", volunteers: 12, sessions: 95, logo: "🥤" },
+            { id: 3, name: companyStats.companyName, volunteers: companyStats.totalVolunteers, sessions: companyStats.totalSessions, logo: "📱" },
+            { id: 4, name: "Santander", volunteers: 9, sessions: 65, logo: "🏦" },
+            { id: 5, name: "BBVA", volunteers: 8, sessions: 52, logo: "💳" },
+          ]}
+          currentCompanyName={companyStats.companyName}
+          title="Ranking de Empresas"
+          description="Las empresas más comprometidas con FQT"
+        />
 
         {/* Impact Message */}
         <Card className="bg-gradient-to-r from-blue-600 to-blue-500 text-white border-none">

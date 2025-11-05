@@ -970,3 +970,23 @@
 - [ ] Añadir sección de ranking de empresas (reutilizar componente de Rankings)
 - [ ] Mantener secciones actuales sin cambios
 - [ ] Verificar coherencia visual con Design System
+
+## Añadir Botón Voluntarios en Landing
+- [x] Añadir botón "Accede como Voluntario" en header del landing
+- [x] Posicionar junto a "Accede como Empresa"
+- [x] Mantener coherencia visual con Design System
+- [x] Verificar que redirige correctamente al portal de voluntarios
+
+## Modificar Pestaña Impacto de mi Empresa con Rankings
+- [x] Extraer componente RankingVolunteers reutilizable
+- [x] Extraer componente RankingCompanies reutilizable
+- [x] Integrar RankingVolunteers en VolunteerCompanyImpact
+- [x] Integrar RankingCompanies en VolunteerCompanyImpact
+- [x] Mantener secciones actuales sin cambios
+- [x] Verificar coherencia visual con Design System
+- [x] Verificar lógica de ordenación (score desc → hours desc → sessions desc → nombre asc)
+
+## Corregir Error HTML Anidado en VolunteerLogin
+- [x] Identificar el <a> anidado en línea 98-99 de VolunteerLogin.tsx
+- [x] Reemplazar Link de wouter por navegación programática
+- [x] Verificar que el error de hydration desaparece
