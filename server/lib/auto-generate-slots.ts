@@ -177,10 +177,11 @@ export async function ensureSlotsForCompany(companyId: number, companyHasFullMon
         
         // Crear slots para esta fecha específica
         for (const service of allServices) {
-          const isMentoring = service.slug === 'mentoring';
-          const startHour = isMentoring ? 11 : 10;
-          const endHour = isMentoring ? 18 : 17;
-          const maxVolunteers = isMentoring ? 3 : 2;
+          // Shadowing usa los mismos horarios que Mentoring
+          const isMentoringOrShadowing = service.slug === 'mentoring' || service.slug === 'shadowing';
+          const startHour = isMentoringOrShadowing ? 11 : 10;
+          const endHour = isMentoringOrShadowing ? 18 : 17;
+          const maxVolunteers = service.slug === 'mentoring' ? 3 : 2;
 
           for (let hour = startHour; hour < endHour; hour++) {
             const startTime = `${hour.toString().padStart(2, '0')}:00`;
@@ -220,10 +221,11 @@ export async function ensureSlotsForCompany(companyId: number, companyHasFullMon
 
       // Crear slots para cada tipo de servicio
       for (const service of allServices) {
-        const isMentoring = service.slug === 'mentoring';
-        const startHour = isMentoring ? 11 : 10;
-        const endHour = isMentoring ? 18 : 17;
-        const maxVolunteers = isMentoring ? 3 : 2;
+        // Shadowing usa los mismos horarios que Mentoring
+        const isMentoringOrShadowing = service.slug === 'mentoring' || service.slug === 'shadowing';
+        const startHour = isMentoringOrShadowing ? 11 : 10;
+        const endHour = isMentoringOrShadowing ? 18 : 17;
+        const maxVolunteers = service.slug === 'mentoring' ? 3 : 2;
 
         for (let hour = startHour; hour < endHour; hour++) {
           const startTime = `${hour.toString().padStart(2, '0')}:00`;
