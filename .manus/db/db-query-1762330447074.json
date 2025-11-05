@@ -1,0 +1,31 @@
+{
+  "query": "SELECT id, email, name, role, openId FROM users WHERE role = 'empresa' ORDER BY id DESC LIMIT 5",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 1d5hijgR4Ge6ZqH.root --database ehPep9asg657TmCX4WxQxm --execute SELECT id, email, name, role, openId FROM users WHERE role = 'empresa' ORDER BY id DESC LIMIT 5",
+  "rows": [
+    {
+      "id": "2610037",
+      "email": "empresa-cbre@test.com",
+      "name": "Usuario CBRE Test",
+      "role": "empresa",
+      "openId": "NULL"
+    },
+    {
+      "id": "690108",
+      "email": "prueba-cbre@test.com",
+      "name": "Usuario Prueba CBRE",
+      "role": "empresa",
+      "openId": "test-cbre-001"
+    },
+    {
+      "id": "690046",
+      "email": "prueba-axa@test.com",
+      "name": "Usuario Prueba AXA",
+      "role": "empresa",
+      "openId": "test-company-axa-001"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\temail\tname\trole\topenId\n2610037\tempresa-cbre@test.com\tUsuario CBRE Test\tempresa\tNULL\n690108\tprueba-cbre@test.com\tUsuario Prueba CBRE\tempresa\ttest-cbre-001\n690046\tprueba-axa@test.com\tUsuario Prueba AXA\tempresa\ttest-company-axa-001\n",
+  "stderr": "",
+  "execution_time_ms": 55
+}

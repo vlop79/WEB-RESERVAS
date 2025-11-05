@@ -1,25 +1,22 @@
 import { useAuth } from "@/_core/hooks/useAuth";
 import { trpc } from "@/lib/trpc";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Calendar, Users, Loader2, Heart, TrendingUp, Clock, Award, Filter, BarChart3 } from "lucide-react";
-import { APP_LOGO } from "@/const";
+import { Calendar, Loader2, Heart, Filter, BarChart3 } from "lucide-react";
 import { useState, useMemo } from "react";
+import CompanyLayout from "@/components/CompanyLayout";
 
-export default function CompanyDashboard() {
-  const { user, loading: authLoading, logout } = useAuth();
+export default function CompanyImpact() {
+  const { user } = useAuth();
   const [dateFilter, setDateFilter] = useState<string>("all");
 
   // Obtener información de la empresa asignada
-  const { data: company, isLoading: companyLoading, error: companyError } = trpc.companyUser.getMyCompany.useQuery(
+  const { data: company, isLoading: companyLoading } = trpc.companyUser.getMyCompany.useQuery(
     undefined,
     { enabled: !!user && user.role === 'empresa' }
   );
-
-  console.log('[CompanyDashboard] Estado:', { user, authLoading, companyLoading, company, companyError });
 
   // Obtener reservas de la empresa
   const { data: bookings, isLoading: bookingsLoading } = trpc.companyUser.getMyCompanyBookings.useQuery(
@@ -32,8 +29,6 @@ export default function CompanyDashboard() {
     undefined,
     { enabled: !!user && user.role === 'empresa' }
   );
-
-
 
   // Filtrar reservas por período
   const filteredBookings = useMemo(() => {
@@ -71,43 +66,18 @@ export default function CompanyDashboard() {
     });
   }, [bookings, dateFilter]);
 
-  if (authLoading || companyLoading || bookingsLoading || statsLoading) {
+  if (companyLoading || bookingsLoading || statsLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-background">
-        <Loader2 className="h-8 w-8 animate-spin text-primary" />
-      </div>
-    );
-  }
-
-  if (!user || user.role !== 'empresa') {
-    console.log('[CompanyDashboard] Usuario no válido o no es empresa:', { user });
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-background">
-        <Card className="max-w-md">
-          <CardHeader>
-            <CardTitle>Acceso no autorizado</CardTitle>
-            <CardDescription>
-              Debes iniciar sesión como usuario de empresa para acceder a esta página.
-            </CardDescription>
-          </CardHeader>
-        </Card>
-      </div>
+      <CompanyLayout>
+        <div className="flex items-center justify-center py-12">
+          <Loader2 className="h-8 w-8 animate-spin text-primary" />
+        </div>
+      </CompanyLayout>
     );
   }
 
   if (!company) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-background">
-        <Card className="max-w-md">
-          <CardHeader>
-            <CardTitle>Sin empresa asignada</CardTitle>
-            <CardDescription>
-              Tu cuenta no tiene una empresa asignada. Por favor, contacta con el administrador.
-            </CardDescription>
-          </CardHeader>
-        </Card>
-      </div>
-    );
+    return <CompanyLayout><div>No se encontró información de la empresa</div></CompanyLayout>;
   }
 
   const formatDate = (dateStr: string) => {
@@ -138,57 +108,9 @@ export default function CompanyDashboard() {
     return <Badge style={{ backgroundColor: config.color }}>{config.label}</Badge>;
   };
 
-  // Calcular métricas de impacto
-  const totalVolunteers = stats?.totalBookings || 0;
-  const completedSessions = stats?.completedBookings || 0;
-  const upcomingSessions = stats?.upcomingBookings || 0;
-  const totalHours = completedSessions * 1;
-
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b bg-card sticky top-0 z-10 shadow-sm">
-        <div className="container py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-6">
-              {/* Logo FQT Icon */}
-              <img 
-                src="/logo-fqt-icon.png" 
-                alt="FQT" 
-                className="h-12 w-12 object-contain"
-              />
-              
-              {/* Separador */}
-              <div className="h-12 w-px bg-border"></div>
-              
-              {/* Logo Empresa */}
-              {company.logoUrl && (
-                <img 
-                  src={company.logoUrl} 
-                  alt={company.name} 
-                  className="h-12 w-auto object-contain"
-                />
-              )}
-              <div>
-                <h1 className="text-xl font-bold text-foreground">{company.name}</h1>
-                <p className="text-sm text-muted-foreground">Dashboard de Impacto</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
-              <div className="text-right">
-                <p className="text-sm font-medium text-foreground">{user.name}</p>
-                <p className="text-xs text-muted-foreground">{user.email}</p>
-              </div>
-              <Button variant="outline" size="sm" onClick={() => logout()}>
-                Cerrar Sesión
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      {/* Main Content */}
-      <main className="container py-8 space-y-8">
+    <CompanyLayout>
+      <div className="space-y-8">
         {/* Sección de Impacto */}
         <div className="space-y-6">
           <div className="flex items-center gap-3">
@@ -198,8 +120,6 @@ export default function CompanyDashboard() {
               <p className="text-muted-foreground">Gracias por apoyar a las mujeres en su camino hacia el empleo</p>
             </div>
           </div>
-
-
         </div>
 
         {/* Zoho Analytics - Impacto Global de FQT */}
@@ -346,7 +266,7 @@ export default function CompanyDashboard() {
             )}
           </CardContent>
         </Card>
-      </main>
-    </div>
+      </div>
+    </CompanyLayout>
   );
 }

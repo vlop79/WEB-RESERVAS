@@ -16,6 +16,8 @@ import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import ZohoTokenGenerator from "./pages/ZohoTokenGenerator";
 import CompanyDashboard from "./pages/CompanyDashboard";
+import CompanyImpact from "./pages/CompanyImpact";
+import CompanyRankings from "./pages/CompanyRankings";
 import RoleBasedRedirect from "./components/RoleBasedRedirect";
 import RatePage from "./pages/RatePage";
 import VolunteerLogin from "./pages/VolunteerLogin";
@@ -62,6 +64,7 @@ function Router() {
       <Route path={"/calendario"} component={CalendarView} />
       <Route path={"/admin/zoho-setup"} component={ZohoTokenGenerator} />
       <Route path={"/company/dashboard"} component={CompanyDashboard} />
+      <Route path={"/company/rankings"} component={CompanyRankings} />
 
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}

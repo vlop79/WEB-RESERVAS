@@ -1,0 +1,16 @@
+{
+  "query": "SELECT id, email, name, role FROM users WHERE email = 'empresa-cbre@test.com'",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 1d5hijgR4Ge6ZqH.root --database ehPep9asg657TmCX4WxQxm --execute SELECT id, email, name, role FROM users WHERE email = 'empresa-cbre@test.com'",
+  "rows": [
+    {
+      "id": "2610037",
+      "email": "empresa-cbre@test.com",
+      "name": "Usuario CBRE Test",
+      "role": "empresa"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\temail\tname\trole\n2610037\tempresa-cbre@test.com\tUsuario CBRE Test\tempresa\n",
+  "stderr": "",
+  "execution_time_ms": 52
+}

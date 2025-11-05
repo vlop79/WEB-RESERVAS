@@ -206,8 +206,8 @@
 - [x] Crear endpoints tRPC para gestión de usuarios
 - [x] Añadir sección de usuarios en panel Admin
 - [x] Formulario para crear usuarios con rol empresa y asignar empresa
-- [ ] Crear panel específico para usuarios empresa (CompanyDashboard)
-- [ ] Filtrar reservas por empresa para usuarios empresa
+- [x] Crear panel específico para usuarios empresa (CompanyDashboard)
+- [x] Filtrar reservas por empresa para usuarios empresa
 
 ## Integración Google Calendar y Meet (Round-Robin)
 - [x] Guardar credenciales de Google Service Account en secrets
@@ -595,8 +595,8 @@
 - [x] Eliminar campo companyId de tabla users en schema.ts
 - [x] Ejecutar migración para eliminar columna companyId
 - [x] Actualizar lógica de creación de usuarios en admin para usar companyUsers
-- [ ] Verificar que la creación de usuarios empresa funcione correctamente
-- [ ] Probar CompanyDashboard con usuario empresa real
+- [x] Verificar que la creación de usuarios empresa funcione correctamente
+- [x] Probar CompanyDashboard con usuario empresa real
 
 # Demostración CompanyDashboard y Zoho Analytics
 
@@ -990,3 +990,11 @@
 - [x] Identificar el <a> anidado en línea 98-99 de VolunteerLogin.tsx
 - [x] Reemplazar Link de wouter por navegación programática
 - [x] Verificar que el error de hydration desaparece
+
+## Crear Pestañas en Portal de Empresas
+- [ ] Analizar estructura actual del portal de empresas (CompanyDashboard)
+- [ ] Crear pestaña "Impacto de mi Empresa" adaptada para empresas
+- [ ] Crear pestaña "Rankings" adaptada para empresas
+- [ ] Reutilizar componentes RankingVolunteers y RankingCompanies
+- [ ] Preparar estructura de datos para integración Zoho CRM
+- [ ] Verificar coherencia visual con Design System
