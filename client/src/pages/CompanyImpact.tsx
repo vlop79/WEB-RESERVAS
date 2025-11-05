@@ -115,9 +115,9 @@ export default function CompanyImpact({ company }: CompanyImpactProps) {
   }
 
   // URLs de los dashboards de Zoho Analytics
-  const zohoGlobalDashboardUrl = `https://analytics.zoho.eu/open-view/2634426000000009115/4c6d1f5c6e7f1b3f9c1c2a2c0d3e4f5a`;
+  const zohoGlobalDashboardUrl = `https://analytics.zoho.eu/open-view/54583000004601244/4519ff3ef1926a4da905f077c02e8570`;
   
-  const zohoCompanyDashboardUrl = `https://analytics.zoho.eu/open-view/2634426000000009119/4c6d1f5c6e7f1b3f9c1c2a2c0d3e4f5a?ZOHO_CRITERIA=%22Datos%20Voluntariado%20Corporativo%22.%22Nombre%20de%20la%20Empresa%22%3D'${encodeURIComponent(company.name)}'`;
+  const zohoCompanyDashboardUrl = `https://analytics.zoho.eu/open-view/54583000002119330/0960d97a7847fcd961fc14b725e6a48f`;
 
   return (
     <div className="space-y-8">

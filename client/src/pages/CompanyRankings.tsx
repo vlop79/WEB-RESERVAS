@@ -13,7 +13,7 @@ interface CompanyRankingsProps {
 export default function CompanyRankings({ company }: CompanyRankingsProps) {
   // URL del dashboard de rankings de Zoho Analytics
   // Este dashboard muestra comparativas entre todas las empresas
-  const zohoRankingsUrl = `https://analytics.zoho.eu/open-view/2634426000000009115/4c6d1f5c6e7f1b3f9c1c2a2c0d3e4f5a`;
+  const zohoRankingsUrl = `https://analytics.zoho.eu/open-view/54583000004601244/4519ff3ef1926a4da905f077c02e8570`;
 
   return (
     <div className="space-y-8">

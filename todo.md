@@ -1015,3 +1015,11 @@
 - [x] Exportar datos filtrados según el filtro de fecha activo
 - [x] Incluir todas las columnas relevantes (fecha, hora, servicio, voluntaria, estado)
 - [x] Probar exportación con diferentes filtros
+
+## Corregir Visualización de Iframes Zoho Analytics
+- [x] Investigar URLs correctas de Zoho Analytics para embebido público
+- [x] Verificar permisos de compartición en Zoho Analytics
+- [x] Actualizar URLs en CompanyImpact.tsx
+- [x] Actualizar URLs en CompanyRankings.tsx
+- [x] Probar visualización en navegador
+- [x] Documentar URLs correctas para futuras referencias
