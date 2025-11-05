@@ -90,10 +90,22 @@ const SPANISH_HOLIDAYS = [
  * @param companyId ID de la empresa
  * @param companyHasFullMonth Si tiene calendario mensual completo
  * @param assignedDay Día de la semana asignado (0=domingo, 1=lunes, ..., 6=sábado) o cadena vacía
+ * @param assignedDay2 Día adicional 2 (opcional)
+ * @param assignedDay3 Día adicional 3 (opcional)
  */
-export async function ensureSlotsForCompany(companyId: number, companyHasFullMonth: boolean, assignedDay?: string) {
-  // Si no tiene calendario completo ni día asignado, no generamos slots
-  if (!companyHasFullMonth && (!assignedDay || assignedDay === '')) {
+export async function ensureSlotsForCompany(
+  companyId: number, 
+  companyHasFullMonth: boolean, 
+  assignedDay?: string,
+  assignedDay2?: string,
+  assignedDay3?: string
+) {
+  // Si no tiene calendario completo ni días asignados, no generamos slots
+  const hasAssignedDays = (assignedDay && assignedDay !== '') || 
+                          (assignedDay2 && assignedDay2 !== '') || 
+                          (assignedDay3 && assignedDay3 !== '');
+  
+  if (!companyHasFullMonth && !hasAssignedDays) {
     return;
   }
 
@@ -145,38 +157,48 @@ export async function ensureSlotsForCompany(companyId: number, companyHasFullMon
   const slotsToInsert: any[] = [];
   const now = new Date();
 
-  // Parsear el patrón de día asignado
-  const dayPattern = assignedDay ? parseAssignedDayPattern(assignedDay) : null;
-  const assignedDayNum = assignedDay && !dayPattern ? parseInt(assignedDay, 10) : null;
+  // Parsear los patrones de días asignados (hasta 3)
+  const assignedDays = [assignedDay, assignedDay2, assignedDay3].filter(day => day && day !== '');
+  const dayPatterns = assignedDays.map(day => parseAssignedDayPattern(day!)).filter(p => p !== null);
+  const assignedDayNums = assignedDays
+    .map(day => {
+      const pattern = parseAssignedDayPattern(day!);
+      if (pattern) return null;
+      const num = parseInt(day!, 10);
+      return !isNaN(num) ? num : null;
+    })
+    .filter(n => n !== null);
   
-  // Si tiene patrón (ej: "1r Miércoles"), generar solo esas fechas específicas
-  if (dayPattern) {
-    // Generar solo la N-ésima ocurrencia de cada mes
+  // Si tiene patrones (ej: "1r Miércoles"), generar solo esas fechas específicas
+  if (dayPatterns.length > 0) {
+    // Generar solo la N-ésima ocurrencia de cada mes para cada patrón
     const startMonth = startDate.getMonth();
     const startYear = startDate.getFullYear();
     const endMonth = oneMonthFromNow.getMonth();
     const endYear = oneMonthFromNow.getFullYear();
     
-    for (let year = startYear; year <= endYear; year++) {
-      const monthStart = year === startYear ? startMonth : 0;
-      const monthEnd = year === endYear ? endMonth : 11;
-      
-      for (let month = monthStart; month <= monthEnd; month++) {
-        const targetDate = getNthDayOfMonth(year, month, dayPattern.dayOfWeek, dayPattern.occurrence);
+    // Iterar sobre cada patrón de día asignado
+    for (const dayPattern of dayPatterns) {
+      for (let year = startYear; year <= endYear; year++) {
+        const monthStart = year === startYear ? startMonth : 0;
+        const monthEnd = year === endYear ? endMonth : 11;
         
-        if (!targetDate || targetDate < startDate || targetDate > oneMonthFromNow) {
-          continue;
-        }
-        
-        const dateStr = targetDate.toISOString().split('T')[0];
-        
-        // Excluir festivos
-        if (SPANISH_HOLIDAYS.includes(dateStr)) {
-          continue;
-        }
-        
-        // Crear slots para esta fecha específica
-        for (const service of allServices) {
+        for (let month = monthStart; month <= monthEnd; month++) {
+          const targetDate = getNthDayOfMonth(year, month, dayPattern.dayOfWeek, dayPattern.occurrence);
+          
+          if (!targetDate || targetDate < startDate || targetDate > oneMonthFromNow) {
+            continue;
+          }
+          
+          const dateStr = targetDate.toISOString().split('T')[0];
+          
+          // Excluir festivos
+          if (SPANISH_HOLIDAYS.includes(dateStr)) {
+            continue;
+          }
+          
+          // Crear slots para esta fecha específica
+          for (const service of allServices) {
           // Shadowing usa los mismos horarios que Mentoring
           const isMentoringOrShadowing = service.slug === 'mentoring' || service.slug === 'shadowing';
           const startHour = isMentoringOrShadowing ? 11 : 10;
@@ -203,14 +225,15 @@ export async function ensureSlotsForCompany(companyId: number, companyHasFullMon
         }
       }
     }
+    }
   } else {
     // Lógica original para días de semana fijos o calendario completo
     for (let d = new Date(startDate); d <= oneMonthFromNow; d.setDate(d.getDate() + 1)) {
       const dateStr = d.toISOString().split('T')[0];
       const dayOfWeek = d.getDay();
       
-      // Si tiene día asignado específico, solo generar para ese día
-      if (assignedDayNum !== null && !isNaN(assignedDayNum) && dayOfWeek !== assignedDayNum) {
+      // Si tiene días asignados específicos, solo generar para esos días
+      if (assignedDayNums.length > 0 && !assignedDayNums.includes(dayOfWeek)) {
         continue;
       }
       
@@ -289,7 +312,13 @@ export async function maintainFullMonthSlots() {
   console.log(`[Maintenance] Verificando ${fullMonthCompanies.length} empresas con calendario completo`);
 
   for (const company of fullMonthCompanies) {
-    await ensureSlotsForCompany(company.id, true);
+    await ensureSlotsForCompany(
+      company.id, 
+      true,
+      company.assignedDay || '',
+      company.assignedDay2 || '',
+      company.assignedDay3 || ''
+    );
   }
 
   console.log(`[Maintenance] Mantenimiento completado`);

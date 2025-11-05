@@ -186,10 +186,20 @@ export const appRouter = router({
         const service = await getServiceTypeBySlug(input.serviceSlug);
         if (!service) throw new TRPCError({ code: "NOT_FOUND", message: "Service not found" });
         
-        // Generar slots automáticamente en background si la empresa tiene calendario completo o día asignado
-        if (company.fullMonthCalendar === 1 || (company.assignedDay && company.assignedDay !== '')) {
+        // Generar slots automáticamente en background si la empresa tiene calendario completo o días asignados
+        const hasAssignedDays = (company.assignedDay && company.assignedDay !== '') ||
+                                (company.assignedDay2 && company.assignedDay2 !== '') ||
+                                (company.assignedDay3 && company.assignedDay3 !== '');
+        
+        if (company.fullMonthCalendar === 1 || hasAssignedDays) {
           // No await - ejecutar en background sin bloquear la respuesta
-          ensureSlotsForCompany(company.id, company.fullMonthCalendar === 1, company.assignedDay || '').catch(err => {
+          ensureSlotsForCompany(
+            company.id, 
+            company.fullMonthCalendar === 1, 
+            company.assignedDay || '',
+            company.assignedDay2 || '',
+            company.assignedDay3 || ''
+          ).catch(err => {
             console.error('[Auto-generate] Error generando slots:', err);
           });
         }

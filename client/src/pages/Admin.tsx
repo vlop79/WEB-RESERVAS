@@ -40,6 +40,8 @@ export default function Admin() {
     slug: "",
     logoUrl: "",
     assignedDay: "",
+    assignedDay2: "",
+    assignedDay3: "",
     accountManager: "",
     fullMonthCalendar: 0,
     active: 1,
@@ -100,7 +102,7 @@ export default function Admin() {
     onSuccess: () => {
       toast.success("Empresa creada correctamente");
       setShowCompanyDialog(false);
-      setCompanyForm({ name: "", slug: "", logoUrl: "", assignedDay: "", accountManager: "", fullMonthCalendar: 0, active: 1 });
+      setCompanyForm({ name: "", slug: "", logoUrl: "", assignedDay: "", assignedDay2: "", assignedDay3: "", accountManager: "", fullMonthCalendar: 0, active: 1 });
       setLogoPreview(null);
       refetchCompanies();
     },
@@ -114,7 +116,7 @@ export default function Admin() {
       toast.success("Empresa actualizada correctamente");
       setShowCompanyDialog(false);
       setEditingCompany(null);
-      setCompanyForm({ name: "", slug: "", logoUrl: "", assignedDay: "", accountManager: "", fullMonthCalendar: 0, active: 1 });
+      setCompanyForm({ name: "", slug: "", logoUrl: "", assignedDay: "", assignedDay2: "", assignedDay3: "", accountManager: "", fullMonthCalendar: 0, active: 1 });
       setLogoPreview(null);
       refetchCompanies();
     },
@@ -226,6 +228,8 @@ export default function Admin() {
       slug: company.slug,
       logoUrl: company.logoUrl || "",
       assignedDay: company.assignedDay || "",
+      assignedDay2: company.assignedDay2 || "",
+      assignedDay3: company.assignedDay3 || "",
       accountManager: company.accountManager || "",
       fullMonthCalendar: company.fullMonthCalendar ?? 0,
       active: company.active,
@@ -238,7 +242,7 @@ export default function Admin() {
     setShowCompanyDialog(open);
     if (!open) {
       setEditingCompany(null);
-      setCompanyForm({ name: "", slug: "", logoUrl: "", assignedDay: "", accountManager: "", fullMonthCalendar: 0, active: 1 });
+      setCompanyForm({ name: "", slug: "", logoUrl: "", assignedDay: "", assignedDay2: "", assignedDay3: "", accountManager: "", fullMonthCalendar: 0, active: 1 });
       setLogoPreview(null);
     }
   };
@@ -618,7 +622,7 @@ export default function Admin() {
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="assignedDay">Día Asignado (opcional)</Label>
+                        <Label htmlFor="assignedDay">Día Asignado 1 (opcional)</Label>
                         <Input
                           id="assignedDay"
                           value={companyForm.assignedDay || ""}
@@ -627,6 +631,30 @@ export default function Admin() {
                         />
                         <p className="text-xs text-muted-foreground">
                           Formato: 1r/2º/3r/4º + Día de la semana
+                        </p>
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="assignedDay2">Día Asignado 2 (opcional)</Label>
+                        <Input
+                          id="assignedDay2"
+                          value={companyForm.assignedDay2 || ""}
+                          onChange={(e) => setCompanyForm({ ...companyForm, assignedDay2: e.target.value })}
+                          placeholder="Ej: 2º Martes"
+                        />
+                        <p className="text-xs text-muted-foreground">
+                          Día adicional para la empresa (opcional)
+                        </p>
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="assignedDay3">Día Asignado 3 (opcional)</Label>
+                        <Input
+                          id="assignedDay3"
+                          value={companyForm.assignedDay3 || ""}
+                          onChange={(e) => setCompanyForm({ ...companyForm, assignedDay3: e.target.value })}
+                          placeholder="Ej: 4º Viernes"
+                        />
+                        <p className="text-xs text-muted-foreground">
+                          Día adicional para la empresa (opcional)
                         </p>
                       </div>
                       <div className="space-y-2">

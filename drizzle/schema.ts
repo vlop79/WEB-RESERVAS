@@ -37,6 +37,8 @@ export const companies = mysqlTable("companies", {
   logoUrl: text("logoUrl"),
   description: text("description"),
   assignedDay: varchar("assignedDay", { length: 100 }), // e.g., "1r Lunes", "3r Jueves"
+  assignedDay2: varchar("assignedDay2", { length: 100 }), // Día adicional 2 (opcional)
+  assignedDay3: varchar("assignedDay3", { length: 100 }), // Día adicional 3 (opcional)
   accountManager: varchar("accountManager", { length: 255 }), // Responsable de cuenta
   fullMonthCalendar: int("fullMonthCalendar").default(0).notNull(), // 1 = calendario completo mensual, 0 = solo día asignado
   priority: mysqlEnum("priority", ["alta", "normal", "baja"]).default("normal").notNull(),
