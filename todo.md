@@ -1023,3 +1023,11 @@
 - [x] Actualizar URLs en CompanyRankings.tsx
 - [x] Probar visualización en navegador
 - [x] Documentar URLs correctas para futuras referencias
+
+## Subir Proyecto a GitHub
+- [ ] Clonar repositorio vlop79/WEB-RESERVAS
+- [ ] Copiar archivos del proyecto al repositorio
+- [ ] Crear .gitignore apropiado
+- [ ] Hacer commit de todos los archivos
+- [ ] Push a GitHub
+- [ ] Verificar que el código se subió correctamente
