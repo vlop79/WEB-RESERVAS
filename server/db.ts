@@ -1268,7 +1268,6 @@ export async function linkOAuthToUser(userId: number, openId: string): Promise<v
  * Shows stats for ALL bookings (confirmed and cancelled)
  */
 export async function getDashboardStats() {
-  const { getDb } = await import("./db");
   const db = await getDb();
   if (!db) return null;
 
