@@ -998,3 +998,13 @@
 - [ ] Reutilizar componentes RankingVolunteers y RankingCompanies
 - [ ] Preparar estructura de datos para integración Zoho CRM
 - [ ] Verificar coherencia visual con Design System
+
+## Agregar Pestañas de Navegación en Portal de Empresas
+- [x] Analizar estructura actual del CompanyDashboard
+- [x] Diseñar sistema de pestañas para navegación (Impacto / Rankings)
+- [x] Crear componente de navegación con pestañas
+- [x] Separar contenido actual en CompanyImpact.tsx
+- [x] Crear CompanyRankings.tsx adaptado para empresas
+- [x] Actualizar rutas en App.tsx
+- [x] Probar navegación entre pestañas
+- [x] Verificar que cada empresa solo ve sus datos

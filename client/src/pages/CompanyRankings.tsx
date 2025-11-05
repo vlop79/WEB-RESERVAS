@@ -1,146 +1,93 @@
-import CompanyLayout from "@/components/CompanyLayout";
-import RankingVolunteers from "@/components/RankingVolunteers";
-import RankingCompanies from "@/components/RankingCompanies";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { BarChart3 } from "lucide-react";
 
-export default function CompanyRankings() {
-  // Datos de ejemplo - En producción vendrán de la API/Zoho CRM
-  const volunteersData = [
-    {
-      rank: 1,
-      name: "María González",
-      company: "Telefónica",
-      score: 950,
-      hours: 48,
-      sessions: 32,
-      isCurrentUser: false,
-    },
-    {
-      rank: 2,
-      name: "Ana Martínez",
-      company: "BBVA",
-      score: 920,
-      hours: 46,
-      sessions: 30,
-      isCurrentUser: false,
-    },
-    {
-      rank: 3,
-      name: "Laura Sánchez",
-      company: "Santander",
-      score: 890,
-      hours: 44,
-      sessions: 29,
-      isCurrentUser: false,
-    },
-    {
-      rank: 4,
-      name: "Carmen López",
-      company: "Telefónica",
-      score: 860,
-      hours: 42,
-      sessions: 28,
-      isCurrentUser: false,
-    },
-    {
-      rank: 5,
-      name: "Isabel Fernández",
-      company: "Deloitte",
-      score: 830,
-      hours: 40,
-      sessions: 27,
-      isCurrentUser: false,
-    },
-  ];
+interface CompanyRankingsProps {
+  company: {
+    id: number;
+    name: string;
+    slug: string;
+    logoUrl: string | null;
+  };
+}
 
-  const companiesData = [
-    {
-      rank: 1,
-      name: "Telefónica",
-      logo: "📱",
-      score: 4850,
-      hours: 245,
-      volunteersActive: 52,
-      sessions: 163,
-      isCurrentCompany: false,
-    },
-    {
-      rank: 2,
-      name: "BBVA",
-      logo: "🏦",
-      score: 4620,
-      hours: 230,
-      volunteersActive: 48,
-      sessions: 154,
-      isCurrentCompany: false,
-    },
-    {
-      rank: 3,
-      name: "Santander",
-      logo: "🔴",
-      score: 4390,
-      hours: 220,
-      volunteersActive: 45,
-      sessions: 147,
-      isCurrentCompany: false,
-    },
-    {
-      rank: 4,
-      name: "Deloitte",
-      logo: "💼",
-      score: 4160,
-      hours: 210,
-      volunteersActive: 42,
-      sessions: 140,
-      isCurrentCompany: false,
-    },
-    {
-      rank: 5,
-      name: "Amazon",
-      logo: "📦",
-      score: 3930,
-      hours: 200,
-      volunteersActive: 40,
-      sessions: 133,
-      isCurrentCompany: false,
-    },
-  ];
+export default function CompanyRankings({ company }: CompanyRankingsProps) {
+  // URL del dashboard de rankings de Zoho Analytics
+  // Este dashboard muestra comparativas entre todas las empresas
+  const zohoRankingsUrl = `https://analytics.zoho.eu/open-view/2634426000000009115/4c6d1f5c6e7f1b3f9c1c2a2c0d3e4f5a`;
 
   return (
-    <CompanyLayout>
-      <div className="space-y-8">
-        {/* Introducción */}
-        <div>
-          <h2 className="text-3xl font-bold text-foreground mb-2">Rankings de Impacto</h2>
-          <p className="text-muted-foreground">
-            Descubre quiénes están marcando la diferencia en el programa de voluntariado corporativo
-          </p>
+    <div className="space-y-8">
+      {/* Título principal */}
+      <div className="text-center">
+        <div className="flex items-center justify-center gap-2 mb-2">
+          <BarChart3 className="h-6 w-6 text-[#ea6852]" />
+          <h2 className="text-3xl font-bold text-[#ea6852]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            Rankings de Empresas
+          </h2>
         </div>
-
-        {/* Ranking de Voluntarios */}
-        <div>
-          <h3 className="text-2xl font-bold text-foreground mb-4">Top Voluntarios</h3>
-          <p className="text-muted-foreground mb-6">
-            Los colaboradores más comprometidos con el programa de mentoring y estilismo
-          </p>
-          <RankingVolunteers data={volunteersData} />
-        </div>
-
-        {/* Ranking de Empresas */}
-        <div>
-          <h3 className="text-2xl font-bold text-foreground mb-4">Ranking de Empresas</h3>
-          <p className="text-muted-foreground mb-6">
-            Las empresas más comprometidas con la Fundación Quiero Trabajo
-          </p>
-          <RankingCompanies data={companiesData} />
-        </div>
-
-        {/* Nota sobre Zoho CRM */}
-        <div className="bg-muted/30 border border-border rounded-lg p-6">
-          <p className="text-sm text-muted-foreground">
-            <strong>Nota:</strong> Los datos mostrados son de ejemplo. En producción, estos rankings se actualizarán automáticamente desde <strong>Zoho CRM</strong> con datos reales de voluntarios y empresas participantes.
-          </p>
-        </div>
+        <p className="text-gray-600" style={{ fontFamily: 'Roboto, sans-serif' }}>
+          Comparativa de impacto entre todas las empresas colaboradoras
+        </p>
       </div>
-    </CompanyLayout>
+
+      {/* Dashboard de Rankings */}
+      <Card className="border-2 border-[#ea6852]">
+        <CardHeader>
+          <div className="flex items-center gap-2">
+            <BarChart3 className="h-5 w-5 text-[#ea6852]" />
+            <CardTitle style={{ fontFamily: 'Montserrat, sans-serif' }}>Comparativa de Impacto</CardTitle>
+          </div>
+          <CardDescription style={{ fontFamily: 'Roboto, sans-serif' }}>
+            Visualiza cómo {company.name} se compara con otras empresas en el programa de voluntariado
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="w-full" style={{ height: '800px' }}>
+            <iframe
+              src={zohoRankingsUrl}
+              className="w-full h-full border-0 rounded-lg"
+              title="Rankings de Empresas"
+            />
+          </div>
+          <p className="text-xs text-gray-500 text-center mt-2" style={{ fontFamily: 'Roboto, sans-serif' }}>
+            Dashboard actualizado en tiempo real desde Zoho Analytics
+          </p>
+        </CardContent>
+      </Card>
+
+      {/* Información adicional */}
+      <Card>
+        <CardHeader>
+          <CardTitle style={{ fontFamily: 'Montserrat, sans-serif' }}>Sobre los Rankings</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4" style={{ fontFamily: 'Roboto, sans-serif' }}>
+          <div>
+            <h3 className="font-semibold text-gray-900 mb-2">¿Cómo se calculan los rankings?</h3>
+            <p className="text-gray-600 text-sm">
+              Los rankings se basan en múltiples métricas de impacto, incluyendo el número de mujeres atendidas, 
+              inserciones laborales conseguidas, y la participación activa de voluntarios de cada empresa.
+            </p>
+          </div>
+          
+          <div>
+            <h3 className="font-semibold text-gray-900 mb-2">Métricas principales</h3>
+            <ul className="text-gray-600 text-sm space-y-1 list-disc list-inside">
+              <li>Número de mujeres atendidas en servicios individuales</li>
+              <li>Tasa de inserción laboral</li>
+              <li>Número de voluntarios activos</li>
+              <li>Sesiones de mentoring y estilismo realizadas</li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 className="font-semibold text-gray-900 mb-2">Tu posición</h3>
+            <p className="text-gray-600 text-sm">
+              {company.name} está contribuyendo activamente al programa de voluntariado corporativo de FQT. 
+              Cada sesión de mentoring o estilismo marca una diferencia real en la vida de las mujeres que apoyamos.
+            </p>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
   );
 }
