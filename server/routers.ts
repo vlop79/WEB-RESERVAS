@@ -987,6 +987,15 @@ export const appRouter = router({
         await updateEmailNotificationSetting(input.notificationType, input.enabled);
         return { success: true };
       }),
+
+    // Dashboard statistics
+    getStats: protectedProcedure.query(async ({ ctx }) => {
+      if (ctx.user.role !== "admin") {
+        throw new TRPCError({ code: "FORBIDDEN" });
+      }
+      const { getDashboardStats } = await import("./db");
+      return getDashboardStats();
+    }),
   }),
 
   // Company User router - for company role users to view their own company data

@@ -1262,3 +1262,126 @@ export async function linkOAuthToUser(userId: number, openId: string): Promise<v
     throw error;
   }
 }
+
+/**
+ * Get dashboard statistics for admin panel
+ */
+export async function getDashboardStats() {
+  const db = await getDb();
+  if (!db) return null;
+
+  const { bookings, companies, serviceTypes, slots } = await import("../drizzle/schema");
+  const { count, sql, eq, and, gte, desc } = await import("drizzle-orm");
+
+  // Get current date and first day of current month
+  const now = new Date();
+  const currentMonthStart = new Date(now.getFullYear(), now.getMonth(), 1).toISOString().split('T')[0];
+  const lastMonthStart = new Date(now.getFullYear(), now.getMonth() - 1, 1).toISOString().split('T')[0];
+  const lastMonthEnd = new Date(now.getFullYear(), now.getMonth(), 0).toISOString().split('T')[0];
+
+  // Total bookings this month
+  const currentMonthBookings = await db
+    .select({ count: count() })
+    .from(bookings)
+    .where(
+      and(
+        gte(bookings.createdAt, new Date(currentMonthStart)),
+        eq(bookings.status, 'confirmed')
+      )
+    );
+
+  // Total bookings last month
+  const lastMonthBookings = await db
+    .select({ count: count() })
+    .from(bookings)
+    .where(
+      and(
+        gte(bookings.createdAt, new Date(lastMonthStart)),
+        sql`${bookings.createdAt} < ${new Date(currentMonthStart)}`,
+        eq(bookings.status, 'confirmed')
+      )
+    );
+
+  // Total active companies
+  const activeCompanies = await db
+    .select({ count: count() })
+    .from(companies)
+    .where(eq(companies.active, 1));
+
+  // Unique volunteers (count distinct emails)
+  const uniqueVolunteers = await db
+    .select({ count: sql<number>`COUNT(DISTINCT ${bookings.volunteerEmail})` })
+    .from(bookings)
+    .where(eq(bookings.status, 'confirmed'));
+
+  // Bookings by service type
+  const bookingsByService = await db
+    .select({
+      serviceName: serviceTypes.name,
+      serviceSlug: serviceTypes.slug,
+      count: count(),
+    })
+    .from(bookings)
+    .innerJoin(serviceTypes, eq(bookings.serviceTypeId, serviceTypes.id))
+    .where(eq(bookings.status, 'confirmed'))
+    .groupBy(serviceTypes.id, serviceTypes.name, serviceTypes.slug);
+
+  // Bookings by month (last 6 months)
+  const sixMonthsAgo = new Date(now.getFullYear(), now.getMonth() - 5, 1);
+  const bookingsByMonth = await db
+    .select({
+      month: sql<string>`DATE_FORMAT(${bookings.createdAt}, '%Y-%m')`,
+      count: count(),
+    })
+    .from(bookings)
+    .where(
+      and(
+        gte(bookings.createdAt, sixMonthsAgo),
+        eq(bookings.status, 'confirmed')
+      )
+    )
+    .groupBy(sql`DATE_FORMAT(${bookings.createdAt}, '%Y-%m')`)
+    .orderBy(sql`DATE_FORMAT(${bookings.createdAt}, '%Y-%m')`);
+
+  // Top 5 most active companies
+  const topCompanies = await db
+    .select({
+      companyName: companies.name,
+      companySlug: companies.slug,
+      bookingCount: count(),
+    })
+    .from(bookings)
+    .innerJoin(companies, eq(bookings.companyId, companies.id))
+    .where(eq(bookings.status, 'confirmed'))
+    .groupBy(companies.id, companies.name, companies.slug)
+    .orderBy(desc(count()))
+    .limit(5);
+
+  // Calculate occupancy rate (booked slots / total slots)
+  const totalSlots = await db
+    .select({ count: count() })
+    .from(slots)
+    .where(eq(slots.active, 1));
+
+  const bookedSlots = await db
+    .select({ count: count() })
+    .from(bookings)
+    .where(eq(bookings.status, 'confirmed'));
+
+  const occupancyRate = totalSlots[0].count > 0 
+    ? Math.round((bookedSlots[0].count / totalSlots[0].count) * 100) 
+    : 0;
+
+  return {
+    overview: {
+      totalBookingsThisMonth: currentMonthBookings[0].count,
+      totalBookingsLastMonth: lastMonthBookings[0].count,
+      activeCompanies: activeCompanies[0].count,
+      uniqueVolunteers: uniqueVolunteers[0].count,
+      occupancyRate,
+    },
+    bookingsByService,
+    bookingsByMonth,
+    topCompanies,
+  };
+}

@@ -29,6 +29,7 @@ import { getLoginUrl } from "@/const";
 import EmailNotificationsManager from "@/components/EmailNotificationsManager";
 import RatingsPanel from "@/components/RatingsPanel";
 import ResourceDownloadsPanel from "@/components/ResourceDownloadsPanel";
+import DashboardStats from "@/components/DashboardStats";
 
 export default function Admin() {
   const { user, loading, isAuthenticated } = useAuth();
@@ -491,38 +492,8 @@ export default function Admin() {
             </CardContent>
           </Card>
 
-          {/* Stats */}
-          <div className="grid gap-4 md:grid-cols-3">
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Total Empresas</CardTitle>
-                <Building2 className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">{companies?.length || 0}</div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Total Reservas</CardTitle>
-                <Calendar className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">{bookings?.length || 0}</div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Voluntarios Activos</CardTitle>
-                <Users className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">
-                  {new Set(bookings?.map((b) => b.volunteerEmail)).size || 0}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+          {/* Dashboard Statistics */}
+          <DashboardStats />
 
           {/* Email Notifications Management */}
           <EmailNotificationsManager />
