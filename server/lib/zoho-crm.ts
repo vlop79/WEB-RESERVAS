@@ -143,7 +143,9 @@ export async function findContactByEmail(email: string): Promise<ZohoContact | n
     const data = await response.json();
     
     if (data.data && data.data.length > 0) {
-      return data.data[0];
+      const contact = data.data[0];
+      console.log('[Zoho CRM] Contact found:', JSON.stringify(contact, null, 2));
+      return contact;
     }
 
     return null;
@@ -196,6 +198,8 @@ export async function createTask(taskData: {
       console.log(`[Zoho CRM] Associating task to account: ${contact.Account_Name.name} (${contact.Account_Name.id})`);
     }
 
+    console.log('[Zoho CRM] Task payload:', JSON.stringify(taskPayload, null, 2));
+    
     const createUrl = `${apiUrl}/crm/v3/Tasks`;
 
     const response = await fetch(createUrl, {
