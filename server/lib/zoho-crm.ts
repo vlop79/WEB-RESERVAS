@@ -40,6 +40,7 @@ interface ZohoTaskData {
   What_Id?: {
     id: string;
   };
+  $se_module?: string;
 }
 
 /**
@@ -191,6 +192,7 @@ export async function createTask(taskData: {
       taskPayload.What_Id = {
         id: contact.Account_Name.id,
       };
+      taskPayload.$se_module = 'Accounts';
       console.log(`[Zoho CRM] Associating task to account: ${contact.Account_Name.name} (${contact.Account_Name.id})`);
     }
 
