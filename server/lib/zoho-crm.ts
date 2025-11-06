@@ -22,6 +22,10 @@ interface ZohoContact {
   Email: string;
   First_Name: string;
   Last_Name: string;
+  Account_Name?: {
+    id: string;
+    name: string;
+  };
 }
 
 interface ZohoTaskData {
@@ -31,6 +35,9 @@ interface ZohoTaskData {
   Status: string;
   Priority: string;
   Who_Id: {
+    id: string;
+  };
+  What_Id?: {
     id: string;
   };
 }
@@ -178,6 +185,14 @@ export async function createTask(taskData: {
         id: contact.id,
       },
     };
+
+    // Si el contacto tiene una cuenta asociada, asociar la tarea también a la cuenta
+    if (contact.Account_Name?.id) {
+      taskPayload.What_Id = {
+        id: contact.Account_Name.id,
+      };
+      console.log(`[Zoho CRM] Associating task to account: ${contact.Account_Name.name} (${contact.Account_Name.id})`);
+    }
 
     const createUrl = `${apiUrl}/crm/v3/Tasks`;
 
