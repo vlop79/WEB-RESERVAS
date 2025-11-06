@@ -377,6 +377,26 @@ export const appRouter = router({
           // Don't fail the booking if email fails
         }
         
+        // Sync booking to Zoho CRM
+        try {
+          const { syncBookingToZoho } = await import("./lib/zoho-crm");
+          await syncBookingToZoho({
+            volunteerEmail: input.volunteerEmail,
+            volunteerName: input.volunteerName,
+            companyName: company.name,
+            serviceType: serviceType.name,
+            date: slot.date,
+            startTime: slot.startTime,
+            endTime: slot.endTime,
+            meetLink: googleMeetLink || undefined,
+            office: input.oficina,
+          });
+          console.log('[Zoho CRM] Booking synced successfully');
+        } catch (zohoError) {
+          console.error('[Zoho CRM] Failed to sync booking:', zohoError);
+          // Don't fail the booking if Zoho sync fails
+        }
+        
         return { 
           success: true,
           meetLink: googleMeetLink,
