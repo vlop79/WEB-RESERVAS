@@ -299,6 +299,7 @@ export async function syncBookingToZoho(booking: {
   meetLink?: string;
   office?: string;
 }): Promise<boolean> {
+  console.log('[Zoho CRM] syncBookingToZoho called with:', JSON.stringify(booking, null, 2));
   try {
     const subject = `Sesión de ${booking.serviceType} - ${booking.companyName}`;
     
