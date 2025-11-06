@@ -30,8 +30,9 @@ interface ZohoTaskData {
   Due_Date: string;
   Status: string;
   Priority: string;
-  $se_module: string;
-  What_Id: string;
+  Who_Id: {
+    id: string;
+  };
 }
 
 /**
@@ -173,8 +174,9 @@ export async function createTask(taskData: {
       Due_Date: taskData.dueDate,
       Status: 'Not Started',
       Priority: taskData.priority || 'High',
-      $se_module: 'Contacts',
-      What_Id: contact.id,
+      Who_Id: {
+        id: contact.id,
+      },
     };
 
     const createUrl = `${apiUrl}/crm/v3/Tasks`;
