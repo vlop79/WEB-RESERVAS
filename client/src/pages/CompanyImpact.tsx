@@ -171,11 +171,11 @@ export default function CompanyImpact({ company }: CompanyImpactProps) {
           </div>
 
           {/* Iframe del dashboard */}
-          <div className="w-full bg-gray-50 rounded-lg p-2" style={{ minHeight: '650px' }}>
+          <div className="w-full bg-gray-50 rounded-lg p-2" style={{ minHeight: '1220px' }}>
             <iframe
               src={zohoCompanyDashboardUrl}
               className="w-full rounded-lg shadow-sm"
-              style={{ height: '630px', border: '1px solid #e5e7eb' }}
+              style={{ height: '1200px', border: '1px solid #e5e7eb' }}
               title={`Dashboard ${company.name}`}
               loading="lazy"
             />
