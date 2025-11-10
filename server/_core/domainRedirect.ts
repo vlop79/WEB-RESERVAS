@@ -16,9 +16,10 @@ export function domainRedirectMiddleware(req: Request, res: Response, next: Next
     !host.includes('localhost') &&
     !host.includes('127.0.0.1')
   ) {
-    const protocol = req.protocol || 'https';
+    // Forzar HTTPS en producción
+    const protocol = req.get('x-forwarded-proto') === 'https' || req.protocol === 'https' ? 'https' : 'https';
     const redirectUrl = `${protocol}://${preferredDomain}${req.originalUrl}`;
-    console.log(`[Domain Redirect] ${host} -> ${preferredDomain}`);
+    console.log(`[Domain Redirect] ${protocol}://${host}${req.originalUrl} -> ${redirectUrl}`);
     return res.redirect(301, redirectUrl);
   }
   
