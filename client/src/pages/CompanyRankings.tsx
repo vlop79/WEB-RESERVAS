@@ -171,13 +171,18 @@ export default function CompanyRankings({ company }: CompanyRankingsProps) {
                 </div>
 
                 {/* Iframe del ranking */}
-                <div className="w-full bg-gray-50 rounded-lg p-3" style={{ minHeight: '700px' }}>
+                <div className="w-full bg-gray-50 rounded-lg p-3 overflow-auto" style={{ minHeight: '700px' }}>
                   <iframe
                     src={rankingUrls[ranking.id as keyof typeof rankingUrls]}
                     className="w-full rounded-lg shadow-sm"
-                    style={{ height: '680px', border: '1px solid #e5e7eb' }}
+                    style={{ 
+                      height: '800px', 
+                      border: '1px solid #e5e7eb',
+                      minWidth: '100%'
+                    }}
                     title={`Ranking ${ranking.title}`}
                     loading="lazy"
+                    frameBorder="0"
                   />
                 </div>
 
