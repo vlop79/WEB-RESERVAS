@@ -114,9 +114,7 @@ export default function CompanyImpact({ company }: CompanyImpactProps) {
     );
   }
 
-  // URLs de los dashboards de Zoho Analytics
-  const zohoGlobalDashboardUrl = `https://analytics.zoho.eu/open-view/54583000004601244/4519ff3ef1926a4da905f077c02e8570`;
-  
+  // URL del dashboard de Zoho Analytics (sin filtro automático)
   const zohoCompanyDashboardUrl = `https://analytics.zoho.eu/open-view/54583000002119330/0960d97a7847fcd961fc14b725e6a48f`;
 
   return (
@@ -134,32 +132,7 @@ export default function CompanyImpact({ company }: CompanyImpactProps) {
         </p>
       </div>
 
-      {/* Sección 1: Impacto Global de FQT */}
-      <Card className="border-2">
-        <CardHeader>
-          <div className="flex items-center gap-2">
-            <BarChart3 className="h-5 w-5 text-[#ea6852]" />
-            <CardTitle style={{ fontFamily: 'Montserrat, sans-serif' }}>Impacto Global de FQT</CardTitle>
-          </div>
-          <CardDescription style={{ fontFamily: 'Roboto, sans-serif' }}>
-            Datos generales del programa de voluntariado corporativo
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="w-full" style={{ height: '600px' }}>
-            <iframe
-              src={zohoGlobalDashboardUrl}
-              className="w-full h-full border-0 rounded-lg"
-              title="Dashboard Global FQT"
-            />
-          </div>
-          <p className="text-xs text-gray-500 text-center mt-2" style={{ fontFamily: 'Roboto, sans-serif' }}>
-            Dashboard global actualizado en tiempo real desde Zoho Analytics
-          </p>
-        </CardContent>
-      </Card>
-
-      {/* Sección 2: Impacto de la Empresa */}
+      {/* Impacto de la Empresa */}
       <Card className="border-2 border-[#ea6852]">
         <CardHeader>
           <div className="flex items-center gap-2">
@@ -170,16 +143,46 @@ export default function CompanyImpact({ company }: CompanyImpactProps) {
             Métricas específicas de voluntarios activos y participación de tu empresa
           </CardDescription>
         </CardHeader>
-        <CardContent>
-          <div className="w-full" style={{ height: '600px' }}>
+        <CardContent className="space-y-4">
+          {/* Mensaje informativo con instrucciones */}
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+            <div className="flex items-start gap-3">
+              <Filter className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+              <div className="flex-1">
+                <h4 className="font-semibold text-blue-900 mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  👉 Cómo ver los datos de {company.name}
+                </h4>
+                <p className="text-sm text-blue-800 mb-3" style={{ fontFamily: 'Roboto, sans-serif' }}>
+                  Este dashboard muestra datos de todas las empresas colaboradoras. Para ver solo los datos de <strong>{company.name}</strong>, sigue estos pasos:
+                </p>
+                <ol className="text-sm text-blue-800 space-y-2 ml-4" style={{ fontFamily: 'Roboto, sans-serif', listStyleType: 'decimal' }}>
+                  <li>
+                    <strong>Paso 1:</strong> Localiza el filtro <strong>"Nombre de Cuenta"</strong> en la parte superior del dashboard
+                  </li>
+                  <li>
+                    <strong>Paso 2:</strong> Haz clic en el desplegable y selecciona <strong>"{company.name}"</strong>
+                  </li>
+                  <li>
+                    <strong>Paso 3:</strong> Automáticamente se mostrarán solo los datos de tu empresa
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          {/* Iframe del dashboard */}
+          <div className="w-full bg-gray-50 rounded-lg p-2" style={{ minHeight: '650px' }}>
             <iframe
               src={zohoCompanyDashboardUrl}
-              className="w-full h-full border-0 rounded-lg"
+              className="w-full rounded-lg shadow-sm"
+              style={{ height: '630px', border: '1px solid #e5e7eb' }}
               title={`Dashboard ${company.name}`}
+              loading="lazy"
             />
           </div>
-          <p className="text-xs text-gray-500 text-center mt-2" style={{ fontFamily: 'Roboto, sans-serif' }}>
-            Dashboard actualizado en tiempo real desde Zoho Analytics
+          
+          <p className="text-xs text-gray-500 text-center" style={{ fontFamily: 'Roboto, sans-serif' }}>
+            📈 Dashboard actualizado en tiempo real desde Zoho Analytics
           </p>
         </CardContent>
       </Card>

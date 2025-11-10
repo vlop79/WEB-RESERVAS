@@ -8,6 +8,7 @@ import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import CompanyImpact from "./CompanyImpact";
 import CompanyRankings from "./CompanyRankings";
+import CompanyFQTImpact from "./CompanyFQTImpact";
 
 export default function CompanyDashboard() {
   const { user, loading: authLoading, logout } = useAuth();
@@ -112,9 +113,10 @@ export default function CompanyDashboard() {
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
-            <TabsTrigger value="impact">Impacto de mi Empresa</TabsTrigger>
-            <TabsTrigger value="rankings">Rankings</TabsTrigger>
+          <TabsList className="grid w-full max-w-3xl mx-auto grid-cols-3 mb-8">
+            <TabsTrigger value="impact">📊 Impacto de mi Empresa</TabsTrigger>
+            <TabsTrigger value="rankings">🏆 Rankings</TabsTrigger>
+            <TabsTrigger value="fqt-impact">🌍 El Impacto de FQT</TabsTrigger>
           </TabsList>
           
           <TabsContent value="impact">
@@ -123,6 +125,10 @@ export default function CompanyDashboard() {
           
           <TabsContent value="rankings">
             <CompanyRankings company={company} />
+          </TabsContent>
+          
+          <TabsContent value="fqt-impact">
+            <CompanyFQTImpact company={company} />
           </TabsContent>
         </Tabs>
       </main>

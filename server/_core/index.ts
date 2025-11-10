@@ -9,6 +9,7 @@ import { appRouter } from "../routers";
 import { initializeReminderService } from "../reminderService";
 import { serveStatic, setupVite } from "./vite";
 import zohoOAuthRoutes from "../zoho-oauth-routes";
+import { domainRedirectMiddleware } from "./domainRedirect";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -32,6 +33,10 @@ async function findAvailablePort(startPort: number = 3000): Promise<number> {
 async function startServer() {
   const app = express();
   const server = createServer(app);
+  
+  // Redirigir automáticamente al dominio personalizado en producción
+  app.use(domainRedirectMiddleware);
+  
   // Configure body parser with larger size limit for file uploads
   app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
